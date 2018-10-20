@@ -15,12 +15,13 @@ use Core23\SitemapBundle\Definition\DefintionManagerInterface;
 use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
 use Core23\SitemapBundle\Model\UrlInterface;
 use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
-use Doctrine\Common\Cache\Cache;
+use Psr\SimpleCache\CacheInterface;
+use Psr\SimpleCache\InvalidArgumentException;
 
 final class SitemapGenerator implements SitemapGeneratorInterface
 {
     /**
-     * @var Cache|null
+     * @var CacheInterface|null
      */
     private $cache;
 
@@ -37,9 +38,9 @@ final class SitemapGenerator implements SitemapGeneratorInterface
     /**
      * @param SitemapServiceManagerInterface $serviceManager
      * @param DefintionManagerInterface      $sitemapManager
-     * @param Cache|null                     $cache
+     * @param CacheInterface|null            $cache
      */
-    public function __construct(SitemapServiceManagerInterface $serviceManager, DefintionManagerInterface $sitemapManager, Cache $cache = null)
+    public function __construct(SitemapServiceManagerInterface $serviceManager, DefintionManagerInterface $sitemapManager, CacheInterface $cache = null)
     {
         $this->serviceManager = $serviceManager;
         $this->sitemapManager = $sitemapManager;
@@ -74,14 +75,16 @@ final class SitemapGenerator implements SitemapGeneratorInterface
      *
      * @param SitemapDefinitionInterface $sitemap
      *
+     * @throws InvalidArgumentException
+     *
      * @return string
      */
     private function fetch(SitemapDefinitionInterface $sitemap): string
     {
         $name = md5(serialize($sitemap));
 
-        if ($this->cache && $this->cache->contains($name)) {
-            return $this->cache->fetch($name);
+        if ($this->cache && $this->cache->has($name)) {
+            return $this->cache->get($name);
         }
 
         $service = $this->serviceManager->get($sitemap);
@@ -96,7 +99,7 @@ final class SitemapGenerator implements SitemapGeneratorInterface
         }
 
         if ($this->cache) {
-            $this->cache->save($name, $xml, $sitemap->getTtl());
+            $this->cache->set($name, $xml, $sitemap->getTtl());
         }
 
         return $xml;

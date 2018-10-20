@@ -9,7 +9,7 @@
     <service id="Core23\SitemapBundle\Generator\SitemapGenerator">
       <argument type="service" id="Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface"/>
       <argument type="service" id="Core23\SitemapBundle\Definition\DefintionManagerInterface"/>
-      <argument type="service" id="doctrine_cache.providers.core23_sitemap" on-invalid="ignore"/>
+      <argument/>
     </service>
   </services>
 </container>

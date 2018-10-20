@@ -11,9 +11,11 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\DependencyInjection;
 
+use Core23\SitemapBundle\Generator\SitemapGenerator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 final class Core23SitemapExtension extends Extension
@@ -23,9 +25,28 @@ final class Core23SitemapExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
+        $configuration = new Configuration();
+        $config        = $this->processConfiguration($configuration, $configs);
+
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('action.xml');
         $loader->load('services.xml');
         $loader->load('sitemap.xml');
+
+        $this->configureCache($container, $config);
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     * @param array            $config
+     */
+    private function configureCache(ContainerBuilder $container, array $config): void
+    {
+        if (null === $config['cache']['service']) {
+            return;
+        }
+
+        $container->getDefinition(SitemapGenerator::class)
+            ->replaceArgument(2, new Reference($config['cache']['service']));
     }
 }
