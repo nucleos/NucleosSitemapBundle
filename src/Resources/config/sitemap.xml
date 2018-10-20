@@ -3,7 +3,6 @@
   <services>
     <service id="core23_sitemap.static" class="Core23\SitemapBundle\Sitemap\StaticSitemapService">
       <tag name="core23.sitemap"/>
-      <argument>core23_sitemap.static</argument>
       <argument type="service" id="router"/>
     </service>
   </services>

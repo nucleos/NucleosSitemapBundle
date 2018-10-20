@@ -43,7 +43,6 @@ final class StaticSitemapServiceTest extends AbstractSitemapServiceTestCase
     protected function createService()
     {
         return new StaticSitemapService(
-            'name',
             $this->router
         );
     }

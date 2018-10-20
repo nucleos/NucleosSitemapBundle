@@ -20,22 +20,15 @@ use Symfony\Component\Routing\RouterInterface;
 abstract class AbstractSitemapService implements SitemapServiceInterface
 {
     /**
-     * @var string
-     */
-    private $name;
-
-    /**
      * @var RouterInterface
      */
     private $router;
 
     /**
-     * @param string          $name
      * @param RouterInterface $router
      */
-    public function __construct(string $name, RouterInterface $router)
+    public function __construct(RouterInterface $router)
     {
-        $this->name   = $name;
         $this->router = $router;
     }
 
@@ -51,7 +44,7 @@ abstract class AbstractSitemapService implements SitemapServiceInterface
      */
     public function getName(): string
     {
-        return $this->name;
+        return \get_class($this);
     }
 
     /**
