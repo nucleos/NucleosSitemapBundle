@@ -40,14 +40,6 @@ abstract class AbstractSitemapService implements SitemapServiceInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function getName(): string
-    {
-        return \get_class($this);
-    }
-
-    /**
      * @param string $name
      * @param array  $parameters
      * @param int    $absolute

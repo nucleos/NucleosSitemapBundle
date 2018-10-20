@@ -29,8 +29,8 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
     {
         $this->services = [];
 
-        foreach ($services as $service) {
-            $this->addSitemap($service);
+        foreach ($services as $id => $service) {
+            $this->addSitemap($id, $service);
         }
     }
 
@@ -53,9 +53,9 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function addSitemap(SitemapServiceInterface $service): void
+    public function addSitemap(string $id, SitemapServiceInterface $service): void
     {
-        $this->services[$service->getName()] = $service;
+        $this->services[$id] = $service;
     }
 
     /**

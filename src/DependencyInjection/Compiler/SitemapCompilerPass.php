@@ -32,6 +32,7 @@ final class SitemapCompilerPass implements CompilerPassInterface
             $definition->setPublic(true);
 
             $serviceManager->addMethodCall('addSitemap', [
+                $id,
                 new Reference($id),
             ]);
 

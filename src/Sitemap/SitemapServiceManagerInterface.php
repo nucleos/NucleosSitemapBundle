@@ -27,7 +27,8 @@ interface SitemapServiceManagerInterface
     /**
      * Adds a new sitemap service.
      *
+     * @param string                  $id
      * @param SitemapServiceInterface $service
      */
-    public function addSitemap(SitemapServiceInterface $service): void;
+    public function addSitemap(string $id, SitemapServiceInterface $service): void;
 }

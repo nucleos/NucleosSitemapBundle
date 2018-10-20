@@ -27,9 +27,4 @@ interface SitemapServiceInterface
      * @return array
      */
     public function execute(SitemapDefinitionInterface $sitemap): array;
-
-    /**
-     * @return string
-     */
-    public function getName(): string;
 }
