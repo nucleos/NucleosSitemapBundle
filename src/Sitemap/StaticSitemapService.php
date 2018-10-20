@@ -12,9 +12,10 @@ declare(strict_types=1);
 namespace Core23\SitemapBundle\Sitemap;
 
 use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
+use Core23\SitemapBundle\Model\Url;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class StaticSitemapService extends AbstractSitemapService
+final class StaticSitemapService implements SitemapServiceInterface
 {
     /**
      * {@inheritdoc}
@@ -35,8 +36,12 @@ final class StaticSitemapService extends AbstractSitemapService
      */
     public function execute(SitemapDefinitionInterface $sitemap): array
     {
+        if (null === $sitemap->getSetting('url')) {
+            return [];
+        }
+
         return [
-            $this->createEntry($sitemap->getSetting('url'), $sitemap->getSetting('priority'), $sitemap->getSetting('changefreq')),
+            new Url($sitemap->getSetting('url'), $sitemap->getSetting('priority'), $sitemap->getSetting('changefreq')),
         ];
     }
 }

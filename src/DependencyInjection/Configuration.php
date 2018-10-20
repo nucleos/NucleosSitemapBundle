@@ -27,6 +27,7 @@ final class Configuration implements ConfigurationInterface
         /** @var ArrayNodeDefinition $node */
         $node = $treeBuilder->root('core23_sitemap');
 
+        $this->addStaticUrlsSection($node);
         $this->addCacheSection($node);
 
         return $treeBuilder;
@@ -43,6 +44,27 @@ final class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('service')->defaultNull()->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    /**
+     * @param ArrayNodeDefinition $node
+     */
+    private function addStaticUrlsSection(ArrayNodeDefinition $node): void
+    {
+        $node
+            ->children()
+                ->arrayNode('static')
+                    ->defaultValue([])
+                    ->prototype('array')
+                        ->children()
+                             ->scalarNode('url')->end()
+                             ->integerNode('priority')->defaultNull()->end()
+                             ->scalarNode('changefreq')->defaultNull()->end()
+                        ->end()
                     ->end()
                 ->end()
             ->end()

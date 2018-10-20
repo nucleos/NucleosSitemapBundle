@@ -13,8 +13,10 @@ namespace Core23\SitemapBundle\DependencyInjection\Compiler;
 
 use Core23\SitemapBundle\Definition\DefintionManagerInterface;
 use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
+use Core23\SitemapBundle\Sitemap\StaticSitemapService;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
 final class SitemapCompilerPass implements CompilerPassInterface
@@ -38,6 +40,21 @@ final class SitemapCompilerPass implements CompilerPassInterface
 
             $definitionManager->addMethodCall('addDefinition', [
                 $id,
+            ]);
+        }
+
+        $this->addStaticUrls($container, $definitionManager);
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     * @param Definition       $definitionManager
+     */
+    private function addStaticUrls(ContainerBuilder $container, Definition $definitionManager): void
+    {
+        foreach ($container->getParameter('core23_sitemap.static_urls') as $options) {
+            $definitionManager->addMethodCall('addDefinition', [
+                StaticSitemapService::class, $options,
             ]);
         }
     }

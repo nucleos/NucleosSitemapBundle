@@ -74,6 +74,18 @@ cache_adapter:
                 directory: '%kernel.cache_dir%/cache'
 ```
 
+### Add static entries
+
+You can add static entries in your yaml config:
+
+```yaml
+# config/packages/core23_sitemap.yaml
+
+core23_sitemap:
+    static:
+        - { url: 'http://example.com', priority: 75, changefreq: 'weekly' }
+```
+
 ### Add a custom sitemap
 
 If you want to create a custom sitemap, the only thing you have to do is to create a service that uses 

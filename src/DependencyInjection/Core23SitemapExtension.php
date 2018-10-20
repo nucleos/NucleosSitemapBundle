@@ -34,6 +34,7 @@ final class Core23SitemapExtension extends Extension
         $loader->load('sitemap.xml');
 
         $this->configureCache($container, $config);
+        $this->configureStaticUrls($container, $config);
     }
 
     /**
@@ -48,5 +49,14 @@ final class Core23SitemapExtension extends Extension
 
         $container->getDefinition(SitemapGenerator::class)
             ->replaceArgument(2, new Reference($config['cache']['service']));
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     * @param array            $config
+     */
+    private function configureStaticUrls(ContainerBuilder $container, array $config): void
+    {
+        $container->setParameter('core23_sitemap.static_urls', $config['static']);
     }
 }
