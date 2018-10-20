@@ -35,7 +35,7 @@ interface SitemapManagerInterface
      *
      * @return self
      */
-    public function addDefinition(string $id, array $configuration);
+    public function addDefinition(string $id, array $configuration = []);
 
     /**
      * Adds a sitemap.

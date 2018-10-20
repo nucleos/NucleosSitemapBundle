@@ -39,7 +39,7 @@ class SitemapManager implements SitemapManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function addDefinition(string $id, array $configuration)
+    public function addDefinition(string $id, array $configuration = [])
     {
         $sitemap = $this->serviceLoader->load($configuration);
 

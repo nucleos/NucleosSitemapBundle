@@ -22,13 +22,17 @@ final class SitemapCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container): void
     {
-        $manager = $container->getDefinition('core23_sitemap.service.manager');
+        $serviceManager = $container->getDefinition('core23_sitemap.service.manager');
+        $sitemapManager = $container->findDefinition('core23_sitemap.manager');
 
         foreach ($container->findTaggedServiceIds('core23.sitemap') as $id => $attributes) {
             $definition = $container->getDefinition($id);
             $definition->setPublic(true);
 
-            $manager->addMethodCall('addSitemap', [new Reference($id)]);
+            $serviceManager->addMethodCall('addSitemap', [new Reference($id)]);
+            $sitemapManager->addMethodCall('addDefinition', [
+                $id,
+            ]);
         }
     }
 }
