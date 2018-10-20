@@ -77,7 +77,7 @@ final class SitemapGenerator implements SitemapGeneratorInterface
      *
      * @return string
      */
-    public function fetch(SitemapInterface $sitemap): string
+    private function fetch(SitemapInterface $sitemap): string
     {
         $name = md5(serialize($sitemap));
 
