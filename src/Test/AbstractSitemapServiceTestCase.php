@@ -13,7 +13,6 @@ namespace Core23\SitemapBundle\Test;
 
 use Core23\SitemapBundle\Model\SitemapInterface;
 use Core23\SitemapBundle\Model\UrlInterface;
-use Core23\SitemapBundle\Sitemap\AbstractSitemapService;
 use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\TestCase;
@@ -44,9 +43,9 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
     }
 
     /**
-     * @return AbstractSitemapService
+     * @return SitemapServiceInterface
      */
-    abstract protected function createService();
+    abstract protected function createService(): SitemapServiceInterface;
 
     /**
      * @param SitemapInterface $sitemap

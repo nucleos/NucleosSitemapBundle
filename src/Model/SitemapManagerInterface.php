@@ -18,7 +18,7 @@ interface SitemapManagerInterface
      *
      * @return self
      */
-    public function setAll(array $sitemaps = []);
+    public function setAll(array $sitemaps = []): self;
 
     /**
      * Returns the sitemaps.
@@ -35,7 +35,7 @@ interface SitemapManagerInterface
      *
      * @return self
      */
-    public function addDefinition(string $id, array $configuration = []);
+    public function addDefinition(string $id, array $configuration = []): self;
 
     /**
      * Adds a sitemap.
@@ -45,7 +45,7 @@ interface SitemapManagerInterface
      *
      * @return self
      */
-    public function add(string $code, SitemapInterface $sitemap);
+    public function add(string $code, SitemapInterface $sitemap): self;
 
     /**
      * Returns the sitemap by code.

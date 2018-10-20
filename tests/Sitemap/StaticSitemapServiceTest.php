@@ -13,6 +13,7 @@ namespace Core23\SitemapBundle\Tests\Sitemap;
 
 use Core23\SitemapBundle\Model\Sitemap;
 use Core23\SitemapBundle\Model\Url;
+use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
 use Core23\SitemapBundle\Sitemap\StaticSitemapService;
 use Core23\SitemapBundle\Test\AbstractSitemapServiceTestCase;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -40,7 +41,7 @@ final class StaticSitemapServiceTest extends AbstractSitemapServiceTestCase
     /**
      * {@inheritdoc}
      */
-    protected function createService()
+    protected function createService(): SitemapServiceInterface
     {
         return new StaticSitemapService(
             $this->router

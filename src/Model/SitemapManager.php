@@ -39,7 +39,7 @@ class SitemapManager implements SitemapManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function addDefinition(string $id, array $configuration = [])
+    public function addDefinition(string $id, array $configuration = []): SitemapManagerInterface
     {
         $sitemap = $this->serviceLoader->load($configuration);
 
@@ -51,7 +51,7 @@ class SitemapManager implements SitemapManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function add(string $code, SitemapInterface $sitemap)
+    public function add(string $code, SitemapInterface $sitemap): SitemapManagerInterface
     {
         $this->sitemaps[$code] = $sitemap;
 
@@ -73,7 +73,7 @@ class SitemapManager implements SitemapManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function setAll(array $sitemaps = [])
+    public function setAll(array $sitemaps = []): SitemapManagerInterface
     {
         $this->sitemaps = $sitemaps;
 
