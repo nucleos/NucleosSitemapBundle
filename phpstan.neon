@@ -10,5 +10,3 @@ parameters:
         - vendor-bin/phpstan/vendor/phpstan/phpstan-strict-rules/rules.neon
 
     ignoreErrors:
-        # Symfony DI
-        - '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition::fixXmlConfig\(\).#'
