@@ -11,22 +11,22 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Model;
 
-class SitemapDefinition implements SitemapDefinitionInterface
+final class SitemapDefinition implements SitemapDefinitionInterface
 {
     /**
      * @var array
      */
-    protected $settings;
+    private $settings;
 
     /**
      * @var string
      */
-    protected $type;
+    private $type;
 
     /**
      * @var int
      */
-    protected $ttl = 0;
+    private $ttl = 0;
 
     /**
      * @param string $type

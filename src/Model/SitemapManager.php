@@ -13,19 +13,19 @@ namespace Core23\SitemapBundle\Model;
 
 use Core23\SitemapBundle\Loader\SitemapLoaderInterface;
 
-class SitemapManager implements SitemapManagerInterface
+final class SitemapManager implements SitemapManagerInterface
 {
     /**
      * Collection of available sitemaps.
      *
      * @var SitemapDefinitionInterface[]
      */
-    protected $sitemaps;
+    private $sitemaps;
 
     /**
      * @var SitemapLoaderInterface
      */
-    protected $serviceLoader;
+    private $serviceLoader;
 
     /**
      * @param SitemapLoaderInterface $serviceLoader

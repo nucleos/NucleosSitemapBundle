@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Model;
 
-class Url implements UrlInterface
+final class Url implements UrlInterface
 {
     /**
      * Always visit url.
@@ -51,22 +51,22 @@ class Url implements UrlInterface
     /**
      * @var string
      */
-    protected $loc;
+    private $loc;
 
     /**
      * @var \DateTime|null
      */
-    protected $lastMod;
+    private $lastMod;
 
     /**
      * @var string|null
      */
-    protected $changeFreq;
+    private $changeFreq;
 
     /**
      * @var int|null
      */
-    protected $priority;
+    private $priority;
 
     /**
      * @param string         $loc
