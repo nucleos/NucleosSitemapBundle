@@ -1,0 +1,6 @@
+.*               export-ignore
+Makefile         export-ignore
+phpunit.xml.dist export-ignore
+docs/*           export-ignore
+tests/*          export-ignore
+vendor-bin/      export-ignore

@@ -1,0 +1,3 @@
+core23_sitemap_xml:
+    path:   /sitemap.xml
+    defaults:  { _controller: 'Core23\SitemapBundle\Action\SitemapXMLAction' }
