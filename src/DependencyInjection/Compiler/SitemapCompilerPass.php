@@ -30,23 +30,5 @@ final class SitemapCompilerPass implements CompilerPassInterface
 
             $manager->addMethodCall('addSitemap', [new Reference($id)]);
         }
-
-        $this->applyContext($container);
-    }
-
-    /**
-     * Apply configurations to the context manager.
-     *
-     * @param ContainerBuilder $container
-     */
-    private function applyContext(ContainerBuilder $container): void
-    {
-        $definition = $container->findDefinition('core23_sitemap.manager');
-
-        foreach ($container->getParameter('core23_sitemap.sitemaps') as $id => $settings) {
-            $definition->addMethodCall('addDefinition', [
-                $id, $settings,
-            ]);
-        }
     }
 }
