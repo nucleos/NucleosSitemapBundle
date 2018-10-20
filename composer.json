@@ -1,7 +1,13 @@
 {
     "name": "core23/sitemap-bundle",
     "type": "symfony-bundle",
-    "description": "Core23SitemapBundle",
+    "description": "This bundle provides some classes for an automatic sitemap.xml generation.",
+    "keywords": [
+        "symfony",
+        "sitemap.xml",
+        "sitemap",
+        "bundle"
+    ],
     "homepage": "https://core23.de",
     "license": "MIT",
     "authors": [
