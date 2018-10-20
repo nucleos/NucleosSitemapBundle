@@ -37,45 +37,17 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function get(SitemapDefinitionInterface $sitemap): ?SitemapServiceInterface
+    public function get(SitemapDefinitionInterface $definition): ?SitemapServiceInterface
     {
-        $service = $this->getService($sitemap->getType());
+        $service = $this->getService($definition->getType());
 
         $optionsResolver = new OptionsResolver();
         $this->configureSettings($optionsResolver, $service);
 
-        $settings = $optionsResolver->resolve($sitemap->getSettings());
-        $sitemap->setSettings($settings);
+        $settings = $optionsResolver->resolve($definition->getSettings());
+        $definition->setSettings($settings);
 
         return $service;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function has($id): bool
-    {
-        return isset($this->services[$id]) ? true : false;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getService(string $id): SitemapServiceInterface
-    {
-        if (!$this->has($id)) {
-            throw new SitemapNotFoundException(sprintf('The sitemap service `%s` does not exist', $id));
-        }
-
-        return $this->services[$id];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getServices(): array
-    {
-        return $this->services;
     }
 
     /**
@@ -84,6 +56,30 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
     public function addSitemap(SitemapServiceInterface $service): void
     {
         $this->services[$service->getName()] = $service;
+    }
+
+    /**
+     * @param string $id
+     *
+     * @return bool
+     */
+    private function has(string $id): bool
+    {
+        return isset($this->services[$id]) ? true : false;
+    }
+
+    /**
+     * @param string $id
+     *
+     * @return SitemapServiceInterface
+     */
+    private function getService(string $id): SitemapServiceInterface
+    {
+        if (!$this->has($id)) {
+            throw new SitemapNotFoundException(sprintf('The sitemap service `%s` does not exist', $id));
+        }
+
+        return $this->services[$id];
     }
 
     /**
