@@ -39,10 +39,6 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
      */
     public function get(SitemapInterface $sitemap): ?SitemapServiceInterface
     {
-        if (null === $sitemap->getType()) {
-            return null;
-        }
-
         $service = $this->getService($sitemap->getType());
 
         $optionsResolver = new OptionsResolver();

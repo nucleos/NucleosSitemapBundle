@@ -19,7 +19,7 @@ class Sitemap implements SitemapInterface
     protected $settings;
 
     /**
-     * @var string|null
+     * @var string
      */
     protected $type;
 
