@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Generator;
 
+use Core23\SitemapBundle\Definition\DefintionManagerInterface;
 use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
-use Core23\SitemapBundle\Model\SitemapManagerInterface;
 use Core23\SitemapBundle\Model\UrlInterface;
 use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
 use Doctrine\Common\Cache\Cache;
@@ -30,16 +30,16 @@ final class SitemapGenerator implements SitemapGeneratorInterface
     private $serviceManager;
 
     /**
-     * @var SitemapManagerInterface
+     * @var DefintionManagerInterface
      */
     private $sitemapManager;
 
     /**
      * @param SitemapServiceManagerInterface $serviceManager
-     * @param SitemapManagerInterface        $sitemapManager
+     * @param DefintionManagerInterface      $sitemapManager
      * @param Cache|null                     $cache
      */
-    public function __construct(SitemapServiceManagerInterface $serviceManager, SitemapManagerInterface $sitemapManager, Cache $cache = null)
+    public function __construct(SitemapServiceManagerInterface $serviceManager, DefintionManagerInterface $sitemapManager, Cache $cache = null)
     {
         $this->serviceManager = $serviceManager;
         $this->sitemapManager = $sitemapManager;

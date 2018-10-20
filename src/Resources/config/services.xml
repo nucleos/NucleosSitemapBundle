@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
-    <service id="Core23\SitemapBundle\Loader\SitemapLoaderInterface" alias="Core23\SitemapBundle\Loader\ServiceLoader"/>
-    <service id="Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface" alias="Core23\SitemapBundle\Sitemap\SitemapServiceManager"/>
-    <service id="Core23\SitemapBundle\Model\SitemapManagerInterface" alias="Core23\SitemapBundle\Model\SitemapManager"/>
+    <service id="Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface" alias="Core23\SitemapBundle\Sitemap\SitemapServiceManager" public="true"/>
+    <service id="Core23\SitemapBundle\Definition\DefintionManagerInterface" alias="Core23\SitemapBundle\Definition\DefintionManager" public="true"/>
     <service id="Core23\SitemapBundle\Generator\SitemapGeneratorInterface" alias="Core23\SitemapBundle\Generator\SitemapGenerator"/>
     <service id="Core23\SitemapBundle\Sitemap\SitemapServiceManager"/>
-    <service id="Core23\SitemapBundle\Loader\ServiceLoader">
-      <argument type="collection"/>
-    </service>
-    <service id="Core23\SitemapBundle\Model\SitemapManager">
-      <argument type="service" id="Core23\SitemapBundle\Loader\ServiceLoader"/>
-    </service>
+    <service id="Core23\SitemapBundle\Definition\DefintionManager"/>
     <service id="Core23\SitemapBundle\Generator\SitemapGenerator">
       <argument type="service" id="Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface"/>
-      <argument type="service" id="Core23\SitemapBundle\Model\SitemapManagerInterface"/>
+      <argument type="service" id="Core23\SitemapBundle\Definition\DefintionManagerInterface"/>
       <argument type="service" id="doctrine_cache.providers.core23_sitemap" on-invalid="ignore"/>
     </service>
   </services>

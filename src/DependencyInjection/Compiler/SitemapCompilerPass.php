@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\DependencyInjection\Compiler;
 
-use Core23\SitemapBundle\Model\SitemapManagerInterface;
+use Core23\SitemapBundle\Definition\DefintionManagerInterface;
 use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -24,15 +24,18 @@ final class SitemapCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container): void
     {
-        $serviceManager = $container->getDefinition(SitemapServiceManagerInterface::class);
-        $sitemapManager = $container->getDefinition(SitemapManagerInterface::class);
+        $serviceManager    = $container->findDefinition(SitemapServiceManagerInterface::class);
+        $definitionManager = $container->findDefinition(DefintionManagerInterface::class);
 
         foreach ($container->findTaggedServiceIds('core23.sitemap') as $id => $attributes) {
             $definition = $container->getDefinition($id);
             $definition->setPublic(true);
 
-            $serviceManager->addMethodCall('addSitemap', [new Reference($id)]);
-            $sitemapManager->addMethodCall('addDefinition', [
+            $serviceManager->addMethodCall('addSitemap', [
+                new Reference($id),
+            ]);
+
+            $definitionManager->addMethodCall('addDefinition', [
                 $id,
             ]);
         }
