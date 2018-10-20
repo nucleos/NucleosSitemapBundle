@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Sitemap;
 
-use Core23\SitemapBundle\Model\SitemapInterface;
+use Core23\SitemapBundle\Model\SitemapDefinitionInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 interface SitemapServiceInterface
@@ -22,11 +22,11 @@ interface SitemapServiceInterface
     public function configureSettings(OptionsResolver $resolver): void;
 
     /**
-     * @param SitemapInterface $sitemap
+     * @param SitemapDefinitionInterface $sitemap
      *
      * @return array
      */
-    public function execute(SitemapInterface $sitemap): array;
+    public function execute(SitemapDefinitionInterface $sitemap): array;
 
     /**
      * @return string

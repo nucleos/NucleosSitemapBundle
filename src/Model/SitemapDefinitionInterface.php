@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Model;
 
-interface SitemapInterface
+interface SitemapDefinitionInterface
 {
     /**
      * Returns the type.

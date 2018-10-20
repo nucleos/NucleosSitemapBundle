@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Generator;
 
-use Core23\SitemapBundle\Model\SitemapInterface;
+use Core23\SitemapBundle\Model\SitemapDefinitionInterface;
 use Core23\SitemapBundle\Model\SitemapManagerInterface;
 use Core23\SitemapBundle\Model\UrlInterface;
 use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
@@ -56,7 +56,6 @@ final class SitemapGenerator implements SitemapGeneratorInterface
         $xml .= 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
         $xml .= 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
 
-        /** @var SitemapInterface $sitemap */
         foreach ($this->sitemapManager->getAll() as $sitemap) {
             $serviceXml = $this->fetch($sitemap);
 
@@ -73,11 +72,11 @@ final class SitemapGenerator implements SitemapGeneratorInterface
     /**
      * Get eventual cached data or generate whole sitemap.
      *
-     * @param SitemapInterface $sitemap
+     * @param SitemapDefinitionInterface $sitemap
      *
      * @return string
      */
-    private function fetch(SitemapInterface $sitemap): string
+    private function fetch(SitemapDefinitionInterface $sitemap): string
     {
         $name = md5(serialize($sitemap));
 

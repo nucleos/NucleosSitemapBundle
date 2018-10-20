@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Core23\SitemapBundle\Loader;
 
 use Core23\SitemapBundle\Exception\SitemapNotFoundException;
-use Core23\SitemapBundle\Model\SitemapInterface;
+use Core23\SitemapBundle\Model\SitemapDefinitionInterface;
 
 interface SitemapLoaderInterface
 {
@@ -21,7 +21,7 @@ interface SitemapLoaderInterface
      *
      * @throws SitemapNotFoundException if no sitemap with that name is found
      *
-     * @return SitemapInterface
+     * @return SitemapDefinitionInterface
      */
-    public function load(array $configuration): SitemapInterface;
+    public function load(array $configuration): SitemapDefinitionInterface;
 }

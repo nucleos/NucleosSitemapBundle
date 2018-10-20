@@ -12,18 +12,18 @@ declare(strict_types=1);
 namespace Core23\SitemapBundle\Sitemap;
 
 use Core23\SitemapBundle\Exception\SitemapNotFoundException;
-use Core23\SitemapBundle\Model\SitemapInterface;
+use Core23\SitemapBundle\Model\SitemapDefinitionInterface;
 
 interface SitemapServiceManagerInterface
 {
     /**
      * Return the block service linked to the link.
      *
-     * @param SitemapInterface $sitemap
+     * @param SitemapDefinitionInterface $sitemap
      *
      * @return SitemapServiceInterface|null
      */
-    public function get(SitemapInterface $sitemap): ?SitemapServiceInterface;
+    public function get(SitemapDefinitionInterface $sitemap): ?SitemapServiceInterface;
 
     /**
      * @param string $id

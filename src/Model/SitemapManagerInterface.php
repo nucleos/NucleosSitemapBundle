@@ -14,7 +14,7 @@ namespace Core23\SitemapBundle\Model;
 interface SitemapManagerInterface
 {
     /**
-     * @param SitemapInterface[] $sitemaps
+     * @param SitemapDefinitionInterface[] $sitemaps
      *
      * @return self
      */
@@ -23,7 +23,7 @@ interface SitemapManagerInterface
     /**
      * Returns the sitemaps.
      *
-     * @return SitemapInterface[]
+     * @return SitemapDefinitionInterface[]
      */
     public function getAll(): array;
 
@@ -40,19 +40,19 @@ interface SitemapManagerInterface
     /**
      * Adds a sitemap.
      *
-     * @param string           $code    Code
-     * @param SitemapInterface $sitemap sitemap object
+     * @param string                     $code    Code
+     * @param SitemapDefinitionInterface $sitemap sitemap object
      *
      * @return self
      */
-    public function add(string $code, SitemapInterface $sitemap): self;
+    public function add(string $code, SitemapDefinitionInterface $sitemap): self;
 
     /**
      * Returns the sitemap by code.
      *
      * @param string $code
      *
-     * @return SitemapInterface|null
+     * @return SitemapDefinitionInterface|null
      */
-    public function get(string $code): ?SitemapInterface;
+    public function get(string $code): ?SitemapDefinitionInterface;
 }

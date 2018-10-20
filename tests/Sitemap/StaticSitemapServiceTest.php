@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Tests\Sitemap;
 
-use Core23\SitemapBundle\Model\Sitemap;
+use Core23\SitemapBundle\Model\SitemapDefinition;
 use Core23\SitemapBundle\Model\Url;
 use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
 use Core23\SitemapBundle\Sitemap\StaticSitemapService;
@@ -22,7 +22,7 @@ final class StaticSitemapServiceTest extends AbstractSitemapServiceTestCase
 {
     public function testSitemap(): void
     {
-        $sitemap = new Sitemap('demo', [
+        $sitemap = new SitemapDefinition('demo', [
             'priority'   => 20,
             'url'        => '/foo/bar',
             'changefreq' => Url::FREQUENCE_DAILY,

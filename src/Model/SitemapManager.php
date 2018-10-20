@@ -18,7 +18,7 @@ class SitemapManager implements SitemapManagerInterface
     /**
      * Collection of available sitemaps.
      *
-     * @var SitemapInterface[]
+     * @var SitemapDefinitionInterface[]
      */
     protected $sitemaps;
 
@@ -51,7 +51,7 @@ class SitemapManager implements SitemapManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function add(string $code, SitemapInterface $sitemap): SitemapManagerInterface
+    public function add(string $code, SitemapDefinitionInterface $sitemap): SitemapManagerInterface
     {
         $this->sitemaps[$code] = $sitemap;
 
@@ -61,7 +61,7 @@ class SitemapManager implements SitemapManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function get(string $code): ?SitemapInterface
+    public function get(string $code): ?SitemapDefinitionInterface
     {
         if (!isset($this->sitemaps[$code])) {
             return null;

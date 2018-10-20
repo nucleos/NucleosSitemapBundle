@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Model;
 
-class Sitemap implements SitemapInterface
+class SitemapDefinition implements SitemapDefinitionInterface
 {
     /**
      * @var array

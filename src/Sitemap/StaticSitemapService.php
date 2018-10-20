@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Sitemap;
 
-use Core23\SitemapBundle\Model\SitemapInterface;
+use Core23\SitemapBundle\Model\SitemapDefinitionInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class StaticSitemapService extends AbstractSitemapService
@@ -33,7 +33,7 @@ final class StaticSitemapService extends AbstractSitemapService
     /**
      * {@inheritdoc}
      */
-    public function execute(SitemapInterface $sitemap): array
+    public function execute(SitemapDefinitionInterface $sitemap): array
     {
         return [
             $this->createEntry($sitemap->getSetting('url'), $sitemap->getSetting('priority'), $sitemap->getSetting('changefreq')),

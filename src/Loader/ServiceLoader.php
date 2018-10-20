@@ -12,8 +12,8 @@ declare(strict_types=1);
 namespace Core23\SitemapBundle\Loader;
 
 use Core23\SitemapBundle\Exception\SitemapNotFoundException;
-use Core23\SitemapBundle\Model\Sitemap;
-use Core23\SitemapBundle\Model\SitemapInterface;
+use Core23\SitemapBundle\Model\SitemapDefinition;
+use Core23\SitemapBundle\Model\SitemapDefinitionInterface;
 
 final class ServiceLoader implements SitemapLoaderInterface
 {
@@ -33,7 +33,7 @@ final class ServiceLoader implements SitemapLoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function load(array $configuration): SitemapInterface
+    public function load(array $configuration): SitemapDefinitionInterface
     {
         if (!\in_array($configuration['type'], $this->types)) {
             throw new SitemapNotFoundException(
@@ -44,6 +44,6 @@ final class ServiceLoader implements SitemapLoaderInterface
             );
         }
 
-        return new Sitemap($configuration['type'], $configuration['settings'] ?? []);
+        return new SitemapDefinition($configuration['type'], $configuration['settings'] ?? []);
     }
 }
