@@ -17,6 +17,7 @@ use Core23\SitemapBundle\Model\UrlInterface;
 use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
 use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
+use RuntimeException;
 
 final class SitemapGenerator implements SitemapGeneratorInterface
 {
@@ -58,7 +59,11 @@ final class SitemapGenerator implements SitemapGeneratorInterface
         $xml .= 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
 
         foreach ($this->sitemapManager->getAll() as $sitemap) {
-            $serviceXml = $this->fetch($sitemap);
+            try {
+                $serviceXml = $this->fetch($sitemap);
+            } catch (InvalidArgumentException $exception) {
+                throw new RuntimeException('Error accessing cache', $exception->getCode(), $exception);
+            }
 
             if ($serviceXml) {
                 $xml .= $serviceXml;
