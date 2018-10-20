@@ -43,8 +43,6 @@ final class StaticSitemapServiceTest extends AbstractSitemapServiceTestCase
      */
     protected function createService(): SitemapServiceInterface
     {
-        return new StaticSitemapService(
-            $this->router
-        );
+        return new StaticSitemapService();
     }
 }
