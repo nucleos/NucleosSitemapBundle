@@ -44,11 +44,6 @@ final class ServiceLoader implements SitemapLoaderInterface
             );
         }
 
-        $sitemap = new Sitemap();
-        $sitemap->setId(uniqid('', true));
-        $sitemap->setType($configuration['type']);
-        $sitemap->setSettings($configuration['settings'] ?? []);
-
-        return $sitemap;
+        return new Sitemap($configuration['type'], $configuration['settings'] ?? []);
     }
 }

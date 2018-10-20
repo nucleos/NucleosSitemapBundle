@@ -49,7 +49,7 @@ class Url implements UrlInterface
     public const FREQUENCE_NEVER = 'never';
 
     /**
-     * @var string|null
+     * @var string
      */
     protected $loc;
 
@@ -69,21 +69,25 @@ class Url implements UrlInterface
     protected $priority;
 
     /**
-     * {@inheritdoc}
+     * @param string         $loc
+     * @param int|null       $priority
+     * @param null|string    $changeFreq
+     * @param \DateTime|null $lastMod
      */
-    public function getChangeFreq(): ?string
+    public function __construct(string $loc, ?int $priority = null, ?string $changeFreq = null, ?\DateTime $lastMod = null)
     {
-        return $this->changeFreq;
+        $this->loc        = $loc;
+        $this->lastMod    = $lastMod;
+        $this->changeFreq = $changeFreq;
+        $this->priority   = $priority;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setChangeFreq(?string $changeFreq)
+    public function getChangeFreq(): ?string
     {
-        $this->changeFreq = $changeFreq;
-
-        return $this;
+        return $this->changeFreq;
     }
 
     /**
@@ -97,29 +101,9 @@ class Url implements UrlInterface
     /**
      * {@inheritdoc}
      */
-    public function setLastMod(?\DateTime $lastMod)
-    {
-        $this->lastMod = $lastMod;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getLoc(): ?string
+    public function getLoc(): string
     {
         return $this->loc;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setLoc(?string $loc)
-    {
-        $this->loc = $loc;
-
-        return $this;
     }
 
     /**
@@ -128,15 +112,5 @@ class Url implements UrlInterface
     public function getPriority(): ?int
     {
         return $this->priority;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setPriority(?int $priority)
-    {
-        $this->priority = $priority;
-
-        return $this;
     }
 }

@@ -76,12 +76,6 @@ abstract class AbstractSitemapService implements SitemapServiceInterface
      */
     final protected function createEntry(string $location, ?int $priority, ?string $changeFreq = null, ?\DateTime $lastMod = null): UrlInterface
     {
-        $url = new Url();
-        $url->setLoc($location);
-        $url->setPriority($priority);
-        $url->setChangeFreq($changeFreq);
-        $url->setLastMod($lastMod);
-
-        return $url;
+        return new Url($location, $priority, $changeFreq, $lastMod);
     }
 }

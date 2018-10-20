@@ -14,11 +14,6 @@ namespace Core23\SitemapBundle\Model;
 class Sitemap implements SitemapInterface
 {
     /**
-     * @var string|null
-     */
-    protected $id;
-
-    /**
      * @var array
      */
     protected $settings;
@@ -34,11 +29,13 @@ class Sitemap implements SitemapInterface
     protected $ttl = 0;
 
     /**
-     * Constructor.
+     * @param string $type
+     * @param array  $settings
      */
-    public function __construct()
+    public function __construct(string $type, array $settings = [])
     {
-        $this->settings = [];
+        $this->settings = $settings;
+        $this->type     = $type;
     }
 
     /**
@@ -46,37 +43,13 @@ class Sitemap implements SitemapInterface
      */
     public function __toString()
     {
-        return $this->getId() ?: 'n/a';
+        return $this->getType() ?: 'n/a';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setId(?string $id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): ?string
-    {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setType(?string $type): void
-    {
-        $this->type = $type;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getType(): ?string
+    public function getType(): string
     {
         return $this->type;
     }
@@ -95,14 +68,6 @@ class Sitemap implements SitemapInterface
     public function getSettings(): array
     {
         return $this->settings;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setSetting(string $name, $value): void
-    {
-        $this->settings[$name] = $value;
     }
 
     /**

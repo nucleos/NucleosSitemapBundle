@@ -42,7 +42,6 @@ class SitemapManager implements SitemapManagerInterface
     public function addDefinition(string $id, array $configuration)
     {
         $sitemap = $this->serviceLoader->load($configuration);
-        $sitemap->setId($id);
 
         $this->add($id, $sitemap);
 

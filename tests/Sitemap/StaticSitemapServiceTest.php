@@ -21,14 +21,11 @@ final class StaticSitemapServiceTest extends AbstractSitemapServiceTestCase
 {
     public function testSitemap(): void
     {
-        $sitemap = new Sitemap();
-        $sitemap->setSettings(
-            [
-                'priority'   => 20,
-                'url'        => '/foo/bar',
-                'changefreq' => Url::FREQUENCE_DAILY,
-            ]
-        );
+        $sitemap = new Sitemap('demo', [
+            'priority'   => 20,
+            'url'        => '/foo/bar',
+            'changefreq' => Url::FREQUENCE_DAILY,
+        ]);
 
         $optionResolver = new OptionsResolver();
         $this->service->configureSettings($optionResolver);
