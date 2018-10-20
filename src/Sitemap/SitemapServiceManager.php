@@ -92,7 +92,7 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
             ->setDefaults([
                 'use_cache'        => true,
                 'extra_cache_keys' => [],
-                'ttl'              => 0,
+                'ttl'              => 86400,
             ])
             ->setAllowedTypes('use_cache', 'bool')
             ->setAllowedTypes('extra_cache_keys', 'array')

@@ -24,11 +24,6 @@ final class SitemapDefinition implements SitemapDefinitionInterface
     private $type;
 
     /**
-     * @var int
-     */
-    private $ttl = 0;
-
-    /**
      * @param string $type
      * @param array  $settings
      */
@@ -87,10 +82,6 @@ final class SitemapDefinition implements SitemapDefinitionInterface
             return 0;
         }
 
-        $ttl = $this->getSetting('ttl', 86400);
-
-        $this->ttl = $ttl;
-
-        return $this->ttl;
+        return (int) $this->getSetting('ttl', 0);
     }
 }

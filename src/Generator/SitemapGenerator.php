@@ -73,33 +73,33 @@ final class SitemapGenerator implements SitemapGeneratorInterface
     /**
      * Get eventual cached data or generate whole sitemap.
      *
-     * @param SitemapDefinitionInterface $sitemap
+     * @param SitemapDefinitionInterface $definition
      *
      * @throws InvalidArgumentException
      *
      * @return string
      */
-    private function fetch(SitemapDefinitionInterface $sitemap): string
+    private function fetch(SitemapDefinitionInterface $definition): string
     {
-        $name = md5(serialize($sitemap));
+        $name = sprintf('Sitemap_%s', md5(serialize($definition)));
 
         if ($this->cache && $this->cache->has($name)) {
             return $this->cache->get($name);
         }
 
-        $service = $this->serviceManager->get($sitemap);
+        $service = $this->serviceManager->get($definition);
 
         if (!$service) {
             return '';
         }
 
         $xml = '';
-        foreach ($service->execute($sitemap) as $entry) {
+        foreach ($service->execute($definition) as $entry) {
             $xml .= $this->getLocEntry($entry);
         }
 
         if ($this->cache) {
-            $this->cache->set($name, $xml, $sitemap->getTtl());
+            $this->cache->set($name, $xml, $definition->getTtl());
         }
 
         return $xml;
