@@ -27,7 +27,7 @@ final class Configuration implements ConfigurationInterface
         /** @var ArrayNodeDefinition $node */
         $node = $treeBuilder->root('core23_sitemap');
 
-        $this->addHttpClientSection($node);
+        $this->addCacheSection($node);
 
         return $treeBuilder;
     }
@@ -35,7 +35,7 @@ final class Configuration implements ConfigurationInterface
     /**
      * @param ArrayNodeDefinition $node
      */
-    private function addHttpClientSection(ArrayNodeDefinition $node): void
+    private function addCacheSection(ArrayNodeDefinition $node): void
     {
         $node
             ->children()
