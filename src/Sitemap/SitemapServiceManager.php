@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Sitemap;
 
+use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
 use Core23\SitemapBundle\Exception\SitemapNotFoundException;
-use Core23\SitemapBundle\Model\SitemapDefinitionInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class SitemapServiceManager implements SitemapServiceManagerInterface

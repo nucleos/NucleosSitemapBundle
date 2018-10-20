@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Model;
 
+use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
 use Core23\SitemapBundle\Loader\SitemapLoaderInterface;
 
 final class SitemapManager implements SitemapManagerInterface

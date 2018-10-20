@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Sitemap;
 
-use Core23\SitemapBundle\Model\SitemapDefinitionInterface;
+use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 interface SitemapServiceInterface

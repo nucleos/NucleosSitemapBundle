@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Tests\Sitemap;
 
-use Core23\SitemapBundle\Model\SitemapDefinition;
+use Core23\SitemapBundle\Definition\SitemapDefinition;
 use Core23\SitemapBundle\Model\Url;
 use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
 use Core23\SitemapBundle\Sitemap\StaticSitemapService;

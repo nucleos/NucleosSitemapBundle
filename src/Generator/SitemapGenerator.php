@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Generator;
 
-use Core23\SitemapBundle\Model\SitemapDefinitionInterface;
+use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
 use Core23\SitemapBundle\Model\SitemapManagerInterface;
 use Core23\SitemapBundle\Model\UrlInterface;
 use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;

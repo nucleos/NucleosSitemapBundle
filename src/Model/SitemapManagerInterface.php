@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Model;
 
+use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
+
 interface SitemapManagerInterface
 {
     /**
