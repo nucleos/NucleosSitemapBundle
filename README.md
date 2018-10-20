@@ -65,7 +65,7 @@ If you want to create a custom sitemap, the only thing you have to do is to crea
 `Core23\SitemapBundle\Sitemap\SitemapServiceInterface` and tag the service with `core23.sitemap`.
 
 ```xml
-    <service id="Acme\DemoBundle\Sitemap\CustomSitemap">
+    <service id="App\Sitemap\CustomSitemap">
       <tag name="core23.sitemap"/>
     </service>
 ```
