@@ -22,13 +22,17 @@ final class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('core23_sitemap');
 
-        /** @var ArrayNodeDefinition $node */
-        $node = $treeBuilder->root('core23_sitemap');
+        // Keep compatibility with symfony/config < 4.2
+        if (!\method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->root('core23_sitemap');
+        } else {
+            $rootNode = $treeBuilder->getRootNode();
+        }
 
-        $this->addStaticUrlsSection($node);
-        $this->addCacheSection($node);
+        $this->addStaticUrlsSection($rootNode);
+        $this->addCacheSection($rootNode);
 
         return $treeBuilder;
     }
