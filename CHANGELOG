@@ -1,1 +1,14 @@
+29/12/2018 08:50  3.0.1  Removed symfony deprecations
+1f8b080 Fixed phpunit config for release command
+c84ca4a Use asserts for type safe root config nodes
+dc8ab25 Removed deprecation warnings
+236d792 Removed deprecation warnings
+9d18554 Added platform workaround for php-cs-fixer tool
+bc7ed9d Require latest phpunit bridge
+51702c3 Require latest phpunit bridge
+c204ddb Travis: Test against PHP 7.3
+569106d Dropped support for PHP 7.1
+7a84780 Fixed syntax error in editorconfig
+538403d Moved test dependencies to vendor-bin
+6f84d8f Fixed CS
 20/10/2018 16:18  3.0.0  Stable release
