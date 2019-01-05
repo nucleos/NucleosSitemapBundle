@@ -38,6 +38,14 @@ final class SitemapDefinition implements SitemapDefinitionInterface
      */
     public function __toString()
     {
+        return $this->toString();
+    }
+
+    /**
+     * @return string
+     */
+    public function toString(): string
+    {
         return $this->getType() ?: 'n/a';
     }
 
