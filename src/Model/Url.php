@@ -71,7 +71,7 @@ final class Url implements UrlInterface
     /**
      * @param string         $loc
      * @param int|null       $priority
-     * @param null|string    $changeFreq
+     * @param string|null    $changeFreq
      * @param \DateTime|null $lastMod
      */
     public function __construct(string $loc, ?int $priority = null, ?string $changeFreq = null, ?\DateTime $lastMod = null)
