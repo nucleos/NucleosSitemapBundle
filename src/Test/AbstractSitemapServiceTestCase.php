@@ -52,7 +52,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
      */
     final protected function process(SitemapDefinitionInterface $sitemap): void
     {
-        /* @var UrlInterface[] $urls */
+        /** @var UrlInterface[] $urls */
         $result = $this->service->execute($sitemap);
 
         $count = \count($this->urls);
@@ -64,15 +64,18 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
                 if ($data = &$this->containsUrl($url)) {
                     if ($url->getPriority() !== $data['priority']) {
                         throw new AssertionFailedError(sprintf("The url '%s' was expected with %s priority. %s given.", $url->getLoc(), $data['priority'], $url->getPriority()));
-                    } elseif ($url->getChangeFreq() !== $data['changefreq']) {
+                    }
+                    if ($url->getChangeFreq() !== $data['changefreq']) {
                         throw new AssertionFailedError(sprintf("The url '%s' was expected with %s changefreq. %s given.", $url->getLoc(), $data['changefreq'], $url->getChangeFreq()));
-                    } elseif ($url->getLastMod() != $data['lastmod']) {
+                    }
+                    if ($url->getLastMod() !== $data['lastmod']) {
                         throw new AssertionFailedError(sprintf("The url '%s' was expected with a different lastmod.", $url->getLoc()));
                     }
                     ++$data['count'];
 
                     continue;
                 }
+
                 throw new AssertionFailedError(sprintf("The url '%s' was not expected to be called.", $url->getLoc()));
             }
         }

@@ -48,7 +48,8 @@ final class Core23SitemapExtension extends Extension
         }
 
         $container->getDefinition(SitemapGenerator::class)
-            ->replaceArgument(2, new Reference($config['cache']['service']));
+            ->replaceArgument(2, new Reference($config['cache']['service']))
+        ;
     }
 
     /**

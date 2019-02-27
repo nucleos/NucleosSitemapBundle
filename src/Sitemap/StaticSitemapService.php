@@ -28,7 +28,8 @@ final class StaticSitemapService implements SitemapServiceInterface
                 'url'        => null,
                 'changefreq' => null,
             ])
-            ->setAllowedTypes('priority', ['null', 'int']);
+            ->setAllowedTypes('priority', ['null', 'int'])
+        ;
     }
 
     /**
