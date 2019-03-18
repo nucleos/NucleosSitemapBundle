@@ -14,6 +14,7 @@ namespace Core23\SitemapBundle\Test;
 use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
 use Core23\SitemapBundle\Model\UrlInterface;
 use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
+use DateTime;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\RouterInterface;
@@ -62,15 +63,9 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
             /** @var UrlInterface $url */
             foreach ($result as $url) {
                 if ($data = &$this->containsUrl($url)) {
-                    if ($url->getPriority() !== $data['priority']) {
-                        throw new AssertionFailedError(sprintf("The url '%s' was expected with %s priority. %s given.", $url->getLoc(), $data['priority'], $url->getPriority()));
-                    }
-                    if ($url->getChangeFreq() !== $data['changefreq']) {
-                        throw new AssertionFailedError(sprintf("The url '%s' was expected with %s changefreq. %s given.", $url->getLoc(), $data['changefreq'], $url->getChangeFreq()));
-                    }
-                    if ($url->getLastMod() !== $data['lastmod']) {
-                        throw new AssertionFailedError(sprintf("The url '%s' was expected with a different lastmod.", $url->getLoc()));
-                    }
+                    $this->assertPriority($url, $data);
+                    $this->assertChangeFreq($url, $data);
+                    $this->assertLastmod($data, $url);
                     ++$data['count'];
 
                     continue;
@@ -88,12 +83,12 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
     }
 
     /**
-     * @param string         $location
-     * @param int            $priority
-     * @param string         $changeFreq
-     * @param \DateTime|null $lastMod
+     * @param string        $location
+     * @param int           $priority
+     * @param string        $changeFreq
+     * @param DateTime|null $lastMod
      */
-    final protected function assertSitemap(string $location, int $priority, string $changeFreq, \DateTime $lastMod = null): void
+    final protected function assertSitemap(string $location, int $priority, string $changeFreq, DateTime $lastMod = null): void
     {
         $this->urls[] = ['location' => $location, 'priority' => $priority, 'changefreq' => $changeFreq, 'lastmod' => $lastMod, 'count' => 0];
     }
@@ -112,5 +107,62 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         }
 
         return null;
+    }
+
+    /**
+     * @param array|null   $data
+     * @param UrlInterface $url
+     */
+    private function assertLastmod(?array $data, UrlInterface $url): void
+    {
+        if (null === $data['lastmod'] && null === $url->getLastMod()) {
+            return;
+        }
+
+        if (!$data['lastmod'] instanceof DateTime) {
+            throw new AssertionFailedError('The lastmod is not a valid \DateTime object.');
+        }
+
+        if ($url->getLastMod() <=> $data['lastmod']) {
+            throw new AssertionFailedError(
+                sprintf("The url '%s' was expected with a different lastmod.", $url->getLoc())
+            );
+        }
+    }
+
+    /**
+     * @param UrlInterface $url
+     * @param array|null   $data
+     */
+    private function assertPriority(UrlInterface $url, ?array $data): void
+    {
+        if ($url->getPriority() !== $data['priority']) {
+            throw new AssertionFailedError(
+                sprintf(
+                    "The url '%s' was expected with %s priority. %s given.",
+                    $url->getLoc(),
+                    $data['priority'],
+                    $url->getPriority()
+                )
+            );
+        }
+    }
+
+    /**
+     * @param UrlInterface $url
+     * @param array|null   $data
+     */
+    private function assertChangeFreq(UrlInterface $url, ?array $data): void
+    {
+        if ($url->getChangeFreq() !== $data['changefreq']) {
+            throw new AssertionFailedError(
+                sprintf(
+                    "The url '%s' was expected with %s changefreq. %s given.",
+                    $url->getLoc(),
+                    $data['changefreq'],
+                    $url->getChangeFreq()
+                )
+            );
+        }
     }
 }
