@@ -11,7 +11,6 @@ namespace Core23\SitemapBundle\Tests;
 
 use Core23\SitemapBundle\Core23SitemapBundle;
 use Core23\SitemapBundle\DependencyInjection\Compiler\SitemapCompilerPass;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -26,7 +25,6 @@ class Core23SitemapBundleTest extends TestCase
 
     public function testBuild(): void
     {
-        /** @var MockObject&ContainerBuilder $containerBuilder */
         $containerBuilder = $this->createMock(ContainerBuilder::class);
 
         $containerBuilder->expects($this->once())->method('addCompilerPass')
