@@ -94,6 +94,14 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
     }
 
     /**
+     * @param int $count
+     */
+    final protected function assertSitemapCount(int $count): void
+    {
+        $this->assertCount($count, $this->urls);
+    }
+
+    /**
      * @param UrlInterface $url
      *
      * @return array|null
