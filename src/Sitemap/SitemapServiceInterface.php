@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Core23\SitemapBundle\Sitemap;
 
 use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
+use Core23\SitemapBundle\Model\UrlInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 interface SitemapServiceInterface
@@ -24,7 +25,7 @@ interface SitemapServiceInterface
     /**
      * @param SitemapDefinitionInterface $sitemap
      *
-     * @return array
+     * @return UrlInterface[]
      */
     public function execute(SitemapDefinitionInterface $sitemap): array;
 }
