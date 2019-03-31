@@ -22,6 +22,7 @@ class SitemapDefintionTest extends TestCase
         $this->assertInstanceOf(SitemapDefinitionInterface::class, $definition);
         $this->assertSame('acme.sitemap', $definition->getType());
         $this->assertSame('acme.sitemap', $definition->toString());
+        $this->assertSame('acme.sitemap', $definition->__toString());
         $this->assertSame([], $definition->getSettings());
     }
 
@@ -50,6 +51,15 @@ class SitemapDefintionTest extends TestCase
         ]);
 
         $this->assertSame(90, $definition->getTtl());
+    }
+
+    public function testTtlWithoutCache(): void
+    {
+        $definition = new SitemapDefinition('acme.sitemap', [
+            'use_cache' => false,
+        ]);
+
+        $this->assertSame(0, $definition->getTtl());
     }
 
     public function testTtlDefault(): void
