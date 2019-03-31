@@ -17,6 +17,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
+/**
+ * @deprecated without any replacement
+ */
 abstract class AbstractSitemapService implements SitemapServiceInterface
 {
     /**
