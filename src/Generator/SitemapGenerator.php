@@ -29,23 +29,23 @@ final class SitemapGenerator implements SitemapGeneratorInterface
     /**
      * @var SitemapServiceManagerInterface
      */
-    private $serviceManager;
+    private $sitemapServiceManager;
 
     /**
      * @var DefintionManagerInterface
      */
-    private $sitemapManager;
+    private $defintionManager;
 
     /**
-     * @param SitemapServiceManagerInterface $serviceManager
-     * @param DefintionManagerInterface      $sitemapManager
+     * @param SitemapServiceManagerInterface $sitemapServiceManager
+     * @param DefintionManagerInterface      $defintionManager
      * @param CacheInterface|null            $cache
      */
-    public function __construct(SitemapServiceManagerInterface $serviceManager, DefintionManagerInterface $sitemapManager, CacheInterface $cache = null)
+    public function __construct(SitemapServiceManagerInterface $sitemapServiceManager, DefintionManagerInterface $defintionManager, CacheInterface $cache = null)
     {
-        $this->serviceManager = $serviceManager;
-        $this->sitemapManager = $sitemapManager;
-        $this->cache          = $cache;
+        $this->sitemapServiceManager = $sitemapServiceManager;
+        $this->defintionManager      = $defintionManager;
+        $this->cache                 = $cache;
     }
 
     /**
@@ -58,7 +58,7 @@ final class SitemapGenerator implements SitemapGeneratorInterface
         $xml .= 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
         $xml .= 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
 
-        foreach ($this->sitemapManager->getAll() as $sitemap) {
+        foreach ($this->defintionManager->getAll() as $sitemap) {
             try {
                 $serviceXml = $this->fetch($sitemap);
             } catch (InvalidArgumentException $exception) {
@@ -92,7 +92,7 @@ final class SitemapGenerator implements SitemapGeneratorInterface
             return $this->cache->get($name);
         }
 
-        $service = $this->serviceManager->get($definition);
+        $service = $this->sitemapServiceManager->get($definition);
 
         if (!$service) {
             return '';
