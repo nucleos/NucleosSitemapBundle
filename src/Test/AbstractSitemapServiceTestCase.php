@@ -127,9 +127,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
             return;
         }
 
-        if (!$data['lastmod'] instanceof DateTime) {
-            throw new AssertionFailedError('The lastmod is not a valid \DateTime object.');
-        }
+        \assert($data['lastmod'] instanceof \DateTime);
 
         if ($url->getLastMod() <=> $data['lastmod']) {
             throw new AssertionFailedError(
