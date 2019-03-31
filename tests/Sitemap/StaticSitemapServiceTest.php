@@ -38,6 +38,24 @@ final class StaticSitemapServiceTest extends AbstractSitemapServiceTestCase
         $this->process($sitemap);
     }
 
+    public function testExecuteWIthNoUrl(): void
+    {
+        $sitemap = new SitemapDefinition('demo', [
+            'priority'   => 20,
+            'url'        => null,
+            'changefreq' => Url::FREQUENCE_DAILY,
+        ]);
+
+        $optionResolver = new OptionsResolver();
+        $this->service->configureSettings($optionResolver);
+
+        $sitemap->setSettings($optionResolver->resolve($sitemap->getSettings()));
+
+        $this->assertSitemapCount(0);
+
+        $this->process($sitemap);
+    }
+
     /**
      * {@inheritdoc}
      */
