@@ -59,20 +59,24 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         $count = \count($this->urls);
         $this->assertCount($count, $result);
 
-        if ($count > 0) {
-            /** @var UrlInterface $url */
-            foreach ($result as $url) {
-                if ($data = &$this->containsUrl($url)) {
-                    $this->assertPriority($url, $data);
-                    $this->assertChangeFreq($url, $data);
-                    $this->assertLastmod($data, $url);
-                    ++$data['count'];
+        if (0 === $count) {
+            return;
+        }
 
-                    continue;
-                }
+        /** @var UrlInterface $url */
+        foreach ($result as $url) {
+            $index = $this->getUrlIndex($url);
 
+            if (-1 === $index) {
                 throw new AssertionFailedError(sprintf("The url '%s' was not expected to be called.", $url->getLoc()));
             }
+
+            $data = &$this->urls[$index];
+
+            $this->assertPriority($url, $data);
+            $this->assertChangeFreq($url, $data);
+            $this->assertLastmod($data, $url);
+            ++$data['count'];
         }
 
         foreach ($this->urls as $data) {
@@ -104,17 +108,17 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
     /**
      * @param UrlInterface $url
      *
-     * @return array|null
+     * @return int
      */
-    private function &containsUrl(UrlInterface $url): ?array
+    private function getUrlIndex(UrlInterface $url): int
     {
-        foreach ($this->urls as &$data) {
+        foreach ($this->urls as $index => $data) {
             if ($url->getLoc() === $data['location']) {
-                return $data;
+                return $index;
             }
         }
 
-        return null;
+        return -1;
     }
 
     /**
