@@ -8,8 +8,11 @@ parameters:
         - vendor-bin/test/vendor/autoload.php
 
     ignoreErrors:
+        - '#Parameter \#1 \$services of class Core23\\SitemapBundle\\Sitemap\\SitemapServiceManager constructor expects array<Core23\\SitemapBundle\\Sitemap\\SitemapServiceInterface>, array<string, stdClass> given.#'
+
         - '#PHPDoc tag @throws with type Psr\\SimpleCache\\InvalidArgumentException is not subtype of Throwable#'
 
         # Symfony DI
         - '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition::children\(\).#'
         - '#Cannot call method end\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
+
