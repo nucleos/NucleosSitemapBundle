@@ -53,7 +53,6 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
      */
     final protected function process(SitemapDefinitionInterface $sitemap): void
     {
-        /** @var UrlInterface[] $urls */
         $result = $this->service->execute($sitemap);
 
         $count = \count($this->urls);
