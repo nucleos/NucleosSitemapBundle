@@ -20,7 +20,7 @@ class DefinitionManagerTest extends TestCase
     {
         $definition = new DefintionManager();
 
-        $this->assertInstanceOf(DefintionManagerInterface::class, $definition);
+        static::assertInstanceOf(DefintionManagerInterface::class, $definition);
     }
 
     public function testAddDefintion(): void
@@ -31,9 +31,9 @@ class DefinitionManagerTest extends TestCase
         ]);
 
         foreach ($definition->getAll() as $id =>  $item) {
-            $this->assertInstanceOf(SitemapDefinition::class, $item);
-            $this->assertSame('foo.definition', $id);
-            $this->assertSame([
+            static::assertInstanceOf(SitemapDefinition::class, $item);
+            static::assertSame('foo.definition', $id);
+            static::assertSame([
                 'foo' => 'bar',
             ], $item->getSettings());
         }

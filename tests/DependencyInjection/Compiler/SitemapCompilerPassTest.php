@@ -69,7 +69,7 @@ class SitemapCompilerPassTest extends TestCase
         $compiler = new SitemapCompilerPass();
         $compiler->process($this->container);
 
-        $this->assertTrue($sitemapDefinition->isPublic());
+        static::assertTrue($sitemapDefinition->isPublic());
     }
 
     public function testProcessWithNoServices(): void
@@ -79,7 +79,7 @@ class SitemapCompilerPassTest extends TestCase
         $compiler = new SitemapCompilerPass();
         $compiler->process($this->container);
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 
     public function testProcessWithStaticUrls(): void
