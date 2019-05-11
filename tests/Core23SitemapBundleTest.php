@@ -20,15 +20,15 @@ class Core23SitemapBundleTest extends TestCase
     {
         $bundle = new Core23SitemapBundle();
 
-        $this->assertInstanceOf(Core23SitemapBundle::class, $bundle);
+        static::assertInstanceOf(Core23SitemapBundle::class, $bundle);
     }
 
     public function testBuild(): void
     {
         $containerBuilder = $this->createMock(ContainerBuilder::class);
 
-        $containerBuilder->expects($this->once())->method('addCompilerPass')
-            ->with($this->isInstanceOf(SitemapCompilerPass::class))
+        $containerBuilder->expects(static::once())->method('addCompilerPass')
+            ->with(static::isInstanceOf(SitemapCompilerPass::class))
         ;
 
         $bundle = new Core23SitemapBundle();

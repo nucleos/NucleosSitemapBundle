@@ -48,7 +48,7 @@ class SitemapGeneratorTest extends TestCase
             $this->defintionManager->reveal()
         );
 
-        $this->assertInstanceOf(SitemapGeneratorInterface::class, $generator);
+        static::assertInstanceOf(SitemapGeneratorInterface::class, $generator);
     }
 
     public function testToXMLWithInvalidDefinition(): void
@@ -76,7 +76,7 @@ class SitemapGeneratorTest extends TestCase
             $this->defintionManager->reveal()
         );
 
-        $this->assertSame($expected, $generator->toXML());
+        static::assertSame($expected, $generator->toXML());
     }
 
     public function testToXMLWithNoEntries(): void
@@ -96,7 +96,7 @@ class SitemapGeneratorTest extends TestCase
             $this->defintionManager->reveal()
         );
 
-        $this->assertSame($expected, $generator->toXML());
+        static::assertSame($expected, $generator->toXML());
     }
 
     public function testToXML(): void
@@ -146,7 +146,7 @@ class SitemapGeneratorTest extends TestCase
             $this->defintionManager->reveal()
         );
 
-        $this->assertSame($expected, $generator->toXML());
+        static::assertSame($expected, $generator->toXML());
     }
 
     public function testToXMLWithExistingCache(): void
@@ -205,7 +205,7 @@ class SitemapGeneratorTest extends TestCase
             $cache->reveal()
         );
 
-        $this->assertSame($expected, $generator->toXML());
+        static::assertSame($expected, $generator->toXML());
     }
 
     public function testToXMLWithExpiredCache(): void
@@ -269,7 +269,7 @@ class SitemapGeneratorTest extends TestCase
             $cache->reveal()
         );
 
-        $this->assertSame($expected, $generator->toXML());
+        static::assertSame($expected, $generator->toXML());
     }
 
     public function testToXMLWithCacheException(): void

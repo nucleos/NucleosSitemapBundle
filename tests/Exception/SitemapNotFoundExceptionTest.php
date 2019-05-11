@@ -19,6 +19,6 @@ class SitemapNotFoundExceptionTest extends TestCase
     {
         $exception = new SitemapNotFoundException();
 
-        $this->assertInstanceOf(Throwable::class, $exception);
+        static::assertInstanceOf(Throwable::class, $exception);
     }
 }

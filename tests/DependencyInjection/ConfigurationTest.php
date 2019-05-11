@@ -30,7 +30,7 @@ class ConfigurationTest extends TestCase
             ],
         ];
 
-        $this->assertSame($expected, $config);
+        static::assertSame($expected, $config);
     }
 
     public function testCronOptions(): void
@@ -63,6 +63,6 @@ class ConfigurationTest extends TestCase
             ],
         ];
 
-        $this->assertArraySubset($expected, $config);
+        static::assertArraySubset($expected, $config);
     }
 }

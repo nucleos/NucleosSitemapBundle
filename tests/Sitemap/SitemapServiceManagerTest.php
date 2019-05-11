@@ -27,7 +27,7 @@ class SitemapServiceManagerTest extends TestCase
     {
         $manager = new SitemapServiceManager();
 
-        $this->assertInstanceOf(SitemapServiceManagerInterface::class, $manager);
+        static::assertInstanceOf(SitemapServiceManagerInterface::class, $manager);
     }
 
     public function testCreationWithInvalidServices(): void
@@ -51,8 +51,8 @@ class SitemapServiceManagerTest extends TestCase
         ]);
         $result =  $manager->get($definition);
 
-        $this->assertInstanceOf(SitemapServiceInterface::class, $result);
-        $this->assertSame([
+        static::assertInstanceOf(SitemapServiceInterface::class, $result);
+        static::assertSame([
             'custom'           => 'foo',
             'use_cache'        => true,
             'extra_cache_keys' => [],
@@ -76,8 +76,8 @@ class SitemapServiceManagerTest extends TestCase
         ]);
         $result =  $manager->get($definition);
 
-        $this->assertInstanceOf(SitemapServiceInterface::class, $result);
-        $this->assertSame([
+        static::assertInstanceOf(SitemapServiceInterface::class, $result);
+        static::assertSame([
             'use_cache'        => false,
             'extra_cache_keys' => ['my-key'],
             'ttl'              => 0,
@@ -126,6 +126,6 @@ class SitemapServiceManagerTest extends TestCase
         $manager = new SitemapServiceManager();
         $manager->addSitemap('my-type', $service->reveal());
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 }

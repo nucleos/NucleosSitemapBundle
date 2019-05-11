@@ -19,11 +19,11 @@ class SitemapDefintionTest extends TestCase
     {
         $definition = new SitemapDefinition('acme.sitemap');
 
-        $this->assertInstanceOf(SitemapDefinitionInterface::class, $definition);
-        $this->assertSame('acme.sitemap', $definition->getType());
-        $this->assertSame('acme.sitemap', $definition->toString());
-        $this->assertSame('acme.sitemap', $definition->__toString());
-        $this->assertSame([], $definition->getSettings());
+        static::assertInstanceOf(SitemapDefinitionInterface::class, $definition);
+        static::assertSame('acme.sitemap', $definition->getType());
+        static::assertSame('acme.sitemap', $definition->toString());
+        static::assertSame('acme.sitemap', $definition->__toString());
+        static::assertSame([], $definition->getSettings());
     }
 
     public function testSetting(): void
@@ -33,14 +33,14 @@ class SitemapDefintionTest extends TestCase
             'foo'=> 'bar',
         ]);
 
-        $this->assertSame('bar', $definition->getSetting('foo'));
+        static::assertSame('bar', $definition->getSetting('foo'));
     }
 
     public function testSettingWithDefault(): void
     {
         $definition = new SitemapDefinition('acme.sitemap');
 
-        $this->assertSame('baz', $definition->getSetting('foo', 'baz'));
+        static::assertSame('baz', $definition->getSetting('foo', 'baz'));
     }
 
     public function testTtl(): void
@@ -50,7 +50,7 @@ class SitemapDefintionTest extends TestCase
             'ttl'       => 90,
         ]);
 
-        $this->assertSame(90, $definition->getTtl());
+        static::assertSame(90, $definition->getTtl());
     }
 
     public function testTtlWithoutCache(): void
@@ -59,13 +59,13 @@ class SitemapDefintionTest extends TestCase
             'use_cache' => false,
         ]);
 
-        $this->assertSame(0, $definition->getTtl());
+        static::assertSame(0, $definition->getTtl());
     }
 
     public function testTtlDefault(): void
     {
         $definition = new SitemapDefinition('acme.sitemap');
 
-        $this->assertSame(0, $definition->getTtl());
+        static::assertSame(0, $definition->getTtl());
     }
 }
