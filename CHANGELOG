@@ -1,3 +1,35 @@
+11/06/2019 19:21  3.1.0  Removed support for outdated symfony versions
+0ea6c19 [BUILD] Replaced deprecated "weak_vendors" option
+08aed51 Added GitHub sponsoring information
+d4cc44e [PATCH] Fixed CS
+f73f6b7 [BUILD] Updated export-ignore files
+02e0328 [BUILD] Updated build tools
+e4ca379 [PATCH] Fixed S
+4bfbfde [BUILD] Removed dependency stage from build matrix
+ae62172 [TEST] Increased test coverage
+265ba21 [TEST] Ignore phpstan error for test
+d22a37b [TEST] Increased test converage
+bdc58a3 [TEST] Fixed sitemap testsuite
+2f4f5a0 [TEST] Removed impossible code
+4445ab3 [PATCH] Throw specific exception if passing invalid service to manger
+89c4d54 [MINOR] Deprecated AbstractSitemapService class
+6c48de0 [PATCH] Fixed wrong internal variable names
+5391a07 [PATCH] Added more precise PHPDoc
+e997773 [TEST] Added more test methods
+6c5077d [PATCH] Added more precise PHPDoc
+c071561 [BUILD] Removed current copyright date
+1572cea [BUILD] Cleanup phpstan config
+477fa64 [BUILD] Cleanup phpstan errors
+045c814 [BUILD] Added more tests
+1b2caf6 [PATCH] Made AbstractSitemapServiceTestCase lastmod check more robust
+383cc10 [BUILD] Added weak_vendors when calling phpunit
+076408c [PATCH] Updated CS Fixer config and run
+8479b66 [BUILD] Updated phpstan version
+fa82a4b [BUILD] Fixed symfony test setup
+2f6f61d [MINOR] Removed support for outdated symfony versions
+41cfe94 Updated cs-fixer config
+ac41b6c Added toString method to models
+608d3cb Fixed CS
 29/12/2018 08:50  3.0.1  Removed symfony deprecations
 1f8b080 Fixed phpunit config for release command
 c84ca4a Use asserts for type safe root config nodes
