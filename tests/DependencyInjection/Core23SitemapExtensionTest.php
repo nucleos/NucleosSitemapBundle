@@ -20,7 +20,7 @@ use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
 use Core23\SitemapBundle\Sitemap\StaticSitemapService;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 
-class Core23SitemapExtensionTest extends AbstractExtensionTestCase
+final class Core23SitemapExtensionTest extends AbstractExtensionTestCase
 {
     public function testLoadDefault(): void
     {

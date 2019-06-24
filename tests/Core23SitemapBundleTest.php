@@ -14,7 +14,7 @@ use Core23\SitemapBundle\DependencyInjection\Compiler\SitemapCompilerPass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class Core23SitemapBundleTest extends TestCase
+final class Core23SitemapBundleTest extends TestCase
 {
     public function testItIsInstantiable(): void
     {

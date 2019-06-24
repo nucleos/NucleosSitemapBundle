@@ -14,7 +14,7 @@ use Core23\SitemapBundle\Definition\DefintionManagerInterface;
 use Core23\SitemapBundle\Definition\SitemapDefinition;
 use PHPUnit\Framework\TestCase;
 
-class DefinitionManagerTest extends TestCase
+final class DefinitionManagerTest extends TestCase
 {
     public function testItIsInstantiable(): void
     {

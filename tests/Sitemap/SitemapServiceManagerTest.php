@@ -21,7 +21,7 @@ use PHPUnit\Framework\TestCase;
 use stdClass;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 
-class SitemapServiceManagerTest extends TestCase
+final class SitemapServiceManagerTest extends TestCase
 {
     public function testItIsInstantiable(): void
     {

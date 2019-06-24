@@ -24,7 +24,7 @@ use Prophecy\Argument;
 use Psr\SimpleCache\CacheInterface;
 use RuntimeException;
 
-class SitemapGeneratorTest extends TestCase
+final class SitemapGeneratorTest extends TestCase
 {
     private $sitemapServiceManager;
 

@@ -16,7 +16,7 @@ use Core23\SitemapBundle\Test\AbstractSitemapServiceTestCase as ParentTestCase;
 use DateTime;
 use PHPUnit\Framework\AssertionFailedError;
 
-class AbstractSitemapServiceTestCaseTest extends ParentTestCase
+final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 {
     private $serviceMock;
 
