@@ -13,7 +13,7 @@ use Core23\SitemapBundle\Action\SitemapXMLAction;
 use Core23\SitemapBundle\Generator\SitemapGeneratorInterface;
 use PHPUnit\Framework\TestCase;
 
-class SitemapXMLActionTest extends TestCase
+final class SitemapXMLActionTest extends TestCase
 {
     public function testExecute(): void
     {

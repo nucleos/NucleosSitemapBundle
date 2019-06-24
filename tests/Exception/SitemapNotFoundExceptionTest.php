@@ -13,7 +13,7 @@ use Core23\SitemapBundle\Exception\SitemapNotFoundException;
 use PHPUnit\Framework\TestCase;
 use Throwable;
 
-class SitemapNotFoundExceptionTest extends TestCase
+final class SitemapNotFoundExceptionTest extends TestCase
 {
     public function testItIsInstantiable(): void
     {

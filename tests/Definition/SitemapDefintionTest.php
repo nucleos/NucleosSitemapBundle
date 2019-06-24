@@ -13,7 +13,7 @@ use Core23\SitemapBundle\Definition\SitemapDefinition;
 use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
 use PHPUnit\Framework\TestCase;
 
-class SitemapDefintionTest extends TestCase
+final class SitemapDefintionTest extends TestCase
 {
     public function testItIsInstantiable(): void
     {
