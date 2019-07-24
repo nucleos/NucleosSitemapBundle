@@ -120,9 +120,6 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
         $this->process($sitemap->reveal());
     }
 
-    /**
-     * @return SitemapServiceInterface
-     */
     protected function createService(): SitemapServiceInterface
     {
         return $this->serviceMock->reveal();

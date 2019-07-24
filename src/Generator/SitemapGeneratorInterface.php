@@ -13,8 +13,5 @@ namespace Core23\SitemapBundle\Generator;
 
 interface SitemapGeneratorInterface
 {
-    /**
-     * @return string
-     */
     public function toXML(): string;
 }

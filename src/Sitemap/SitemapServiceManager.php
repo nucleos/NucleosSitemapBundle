@@ -63,21 +63,11 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
         $this->services[$id] = $service;
     }
 
-    /**
-     * @param string $id
-     *
-     * @return bool
-     */
     private function has(string $id): bool
     {
         return isset($this->services[$id]) ? true : false;
     }
 
-    /**
-     * @param string $id
-     *
-     * @return SitemapServiceInterface
-     */
     private function getService(string $id): SitemapServiceInterface
     {
         if (!$this->has($id)) {
@@ -87,10 +77,6 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
         return $this->services[$id];
     }
 
-    /**
-     * @param OptionsResolver         $resolver
-     * @param SitemapServiceInterface $sitemap
-     */
     private function configureSettings(OptionsResolver $resolver, SitemapServiceInterface $sitemap): void
     {
         $resolver

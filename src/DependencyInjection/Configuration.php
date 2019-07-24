@@ -38,9 +38,6 @@ final class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    /**
-     * @param ArrayNodeDefinition $node
-     */
     private function addCacheSection(ArrayNodeDefinition $node): void
     {
         $node
@@ -55,9 +52,6 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
-    /**
-     * @param ArrayNodeDefinition $node
-     */
     private function addStaticUrlsSection(ArrayNodeDefinition $node): void
     {
         $node

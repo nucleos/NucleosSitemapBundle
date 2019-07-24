@@ -17,14 +17,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 interface SitemapServiceInterface
 {
-    /**
-     * @param OptionsResolver $resolver
-     */
     public function configureSettings(OptionsResolver $resolver): void;
 
     /**
-     * @param SitemapDefinitionInterface $sitemap
-     *
      * @return UrlInterface[]
      */
     public function execute(SitemapDefinitionInterface $sitemap): array;

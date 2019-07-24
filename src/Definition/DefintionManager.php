@@ -43,12 +43,6 @@ final class DefintionManager implements DefintionManagerInterface
         return $this->sitemaps;
     }
 
-    /**
-     * @param string                     $code
-     * @param SitemapDefinitionInterface $sitemap
-     *
-     * @return DefintionManagerInterface
-     */
     private function add(string $code, SitemapDefinitionInterface $sitemap): DefintionManagerInterface
     {
         $this->sitemaps[$code] = $sitemap;

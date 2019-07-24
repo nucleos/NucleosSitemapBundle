@@ -13,14 +13,8 @@ namespace Core23\SitemapBundle\Model;
 
 interface UrlInterface
 {
-    /**
-     * @return string|null
-     */
     public function getChangeFreq(): ?string;
 
-    /**
-     * @return \DateTime|null
-     */
     public function getLastMod(): ?\DateTime;
 
     /**
@@ -28,8 +22,5 @@ interface UrlInterface
      */
     public function getLoc(): ?string;
 
-    /**
-     * @return int|null
-     */
     public function getPriority(): ?int;
 }

@@ -36,11 +36,6 @@ final class SitemapGenerator implements SitemapGeneratorInterface
      */
     private $defintionManager;
 
-    /**
-     * @param SitemapServiceManagerInterface $sitemapServiceManager
-     * @param DefintionManagerInterface      $defintionManager
-     * @param CacheInterface|null            $cache
-     */
     public function __construct(SitemapServiceManagerInterface $sitemapServiceManager, DefintionManagerInterface $defintionManager, CacheInterface $cache = null)
     {
         $this->sitemapServiceManager = $sitemapServiceManager;
@@ -78,11 +73,7 @@ final class SitemapGenerator implements SitemapGeneratorInterface
     /**
      * Get eventual cached data or generate whole sitemap.
      *
-     * @param SitemapDefinitionInterface $definition
-     *
      * @throws InvalidArgumentException
-     *
-     * @return string
      */
     private function fetch(SitemapDefinitionInterface $definition): string
     {
@@ -110,11 +101,6 @@ final class SitemapGenerator implements SitemapGeneratorInterface
         return $xml;
     }
 
-    /**
-     * @param UrlInterface $url
-     *
-     * @return string
-     */
     private function getLocEntry(UrlInterface $url): string
     {
         return '<url>'.

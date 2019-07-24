@@ -27,9 +27,6 @@ abstract class AbstractSitemapService implements SitemapServiceInterface
      */
     private $router;
 
-    /**
-     * @param RouterInterface $router
-     */
     public function __construct(RouterInterface $router)
     {
         $this->router = $router;
@@ -44,24 +41,13 @@ abstract class AbstractSitemapService implements SitemapServiceInterface
 
     /**
      * @param string $name
-     * @param array  $parameters
      * @param int    $absolute
-     *
-     * @return string
      */
     final protected function generate($name, array $parameters = [], $absolute = UrlGeneratorInterface::ABSOLUTE_URL): string
     {
         return $this->router->generate($name, $parameters, $absolute);
     }
 
-    /**
-     * @param string         $location
-     * @param int|null       $priority
-     * @param string|null    $changeFreq
-     * @param \DateTime|null $lastMod
-     *
-     * @return UrlInterface
-     */
     final protected function createEntry(string $location, ?int $priority, ?string $changeFreq = null, ?\DateTime $lastMod = null): UrlInterface
     {
         return new Url($location, $priority, $changeFreq, $lastMod);

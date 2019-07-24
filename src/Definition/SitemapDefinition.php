@@ -23,10 +23,6 @@ final class SitemapDefinition implements SitemapDefinitionInterface
      */
     private $type;
 
-    /**
-     * @param string $type
-     * @param array  $settings
-     */
     public function __construct(string $type, array $settings = [])
     {
         $this->settings = $settings;
@@ -41,9 +37,6 @@ final class SitemapDefinition implements SitemapDefinitionInterface
         return $this->toString();
     }
 
-    /**
-     * @return string
-     */
     public function toString(): string
     {
         return $this->getType() ?: 'n/a';
