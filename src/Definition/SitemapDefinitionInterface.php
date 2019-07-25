@@ -22,8 +22,6 @@ interface SitemapDefinitionInterface
 
     /**
      * Returns the block cache TTL.
-     *
-     * @return int
      */
     public function getTtl(): int;
 
@@ -46,8 +44,6 @@ interface SitemapDefinitionInterface
      *
      * @param string     $name    Key name
      * @param mixed|null $default Default value
-     *
-     * @return mixed
      */
     public function getSetting(string $name, $default = null);
 }

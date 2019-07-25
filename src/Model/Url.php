@@ -68,12 +68,6 @@ final class Url implements UrlInterface
      */
     private $priority;
 
-    /**
-     * @param string         $loc
-     * @param int|null       $priority
-     * @param string|null    $changeFreq
-     * @param \DateTime|null $lastMod
-     */
     public function __construct(string $loc, ?int $priority = null, ?string $changeFreq = null, ?\DateTime $lastMod = null)
     {
         $this->loc        = $loc;

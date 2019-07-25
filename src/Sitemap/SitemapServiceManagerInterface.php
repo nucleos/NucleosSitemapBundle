@@ -17,18 +17,11 @@ interface SitemapServiceManagerInterface
 {
     /**
      * Return the block service linked to the link.
-     *
-     * @param SitemapDefinitionInterface $definition
-     *
-     * @return SitemapServiceInterface|null
      */
     public function get(SitemapDefinitionInterface $definition): ?SitemapServiceInterface;
 
     /**
      * Adds a new sitemap service.
-     *
-     * @param string                  $id
-     * @param SitemapServiceInterface $service
      */
     public function addSitemap(string $id, SitemapServiceInterface $service): void;
 }

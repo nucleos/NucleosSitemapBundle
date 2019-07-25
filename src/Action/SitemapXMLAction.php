@@ -21,17 +21,11 @@ final class SitemapXMLAction
      */
     private $generator;
 
-    /**
-     * @param SitemapGeneratorInterface $generator
-     */
     public function __construct(SitemapGeneratorInterface $generator)
     {
         $this->generator = $generator;
     }
 
-    /**
-     * @return Response
-     */
     public function __invoke(): Response
     {
         $response = new Response($this->generator->toXML());

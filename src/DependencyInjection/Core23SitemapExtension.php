@@ -37,10 +37,6 @@ final class Core23SitemapExtension extends Extension
         $this->configureStaticUrls($container, $config);
     }
 
-    /**
-     * @param ContainerBuilder $container
-     * @param array            $config
-     */
     private function configureCache(ContainerBuilder $container, array $config): void
     {
         if (null === $config['cache']['service']) {
@@ -52,10 +48,6 @@ final class Core23SitemapExtension extends Extension
         ;
     }
 
-    /**
-     * @param ContainerBuilder $container
-     * @param array            $config
-     */
     private function configureStaticUrls(ContainerBuilder $container, array $config): void
     {
         $container->setParameter('core23_sitemap.static_urls', $config['static']);

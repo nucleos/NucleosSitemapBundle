@@ -16,17 +16,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class SitemapService implements SitemapServiceInterface
 {
-    /**
-     * @param OptionsResolver $resolver
-     */
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefault('custom', 'foo');
     }
 
     /**
-     * @param SitemapDefinitionInterface $sitemap
-     *
      * @return UrlInterface[]
      */
     public function execute(SitemapDefinitionInterface $sitemap): array

@@ -22,11 +22,6 @@ interface DefintionManagerInterface
 
     /**
      * Adds a sitemap definition.
-     *
-     * @param string $id
-     * @param array  $configuration
-     *
-     * @return self
      */
     public function addDefinition(string $id, array $configuration = []): self;
 }

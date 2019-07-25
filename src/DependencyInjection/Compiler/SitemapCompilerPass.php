@@ -46,10 +46,6 @@ final class SitemapCompilerPass implements CompilerPassInterface
         $this->addStaticUrls($container, $definitionManager);
     }
 
-    /**
-     * @param ContainerBuilder $container
-     * @param Definition       $definitionManager
-     */
     private function addStaticUrls(ContainerBuilder $container, Definition $definitionManager): void
     {
         foreach ($container->getParameter('core23_sitemap.static_urls') as $options) {

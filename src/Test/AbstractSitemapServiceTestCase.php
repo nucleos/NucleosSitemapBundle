@@ -43,14 +43,8 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         $this->service = $this->createService();
     }
 
-    /**
-     * @return SitemapServiceInterface
-     */
     abstract protected function createService(): SitemapServiceInterface;
 
-    /**
-     * @param SitemapDefinitionInterface $sitemap
-     */
     final protected function process(SitemapDefinitionInterface $sitemap): void
     {
         $result = $this->service->execute($sitemap);
@@ -85,30 +79,16 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         }
     }
 
-    /**
-     * @param string        $location
-     * @param int           $priority
-     * @param string        $changeFreq
-     * @param DateTime|null $lastMod
-     */
     final protected function assertSitemap(string $location, int $priority, string $changeFreq, DateTime $lastMod = null): void
     {
         $this->urls[] = ['location' => $location, 'priority' => $priority, 'changefreq' => $changeFreq, 'lastmod' => $lastMod, 'count' => 0];
     }
 
-    /**
-     * @param int $count
-     */
     final protected function assertSitemapCount(int $count): void
     {
         static::assertCount($count, $this->urls);
     }
 
-    /**
-     * @param UrlInterface $url
-     *
-     * @return int
-     */
     private function getUrlIndex(UrlInterface $url): int
     {
         foreach ($this->urls as $index => $data) {
@@ -120,10 +100,6 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         return -1;
     }
 
-    /**
-     * @param array|null   $data
-     * @param UrlInterface $url
-     */
     private function assertLastmod(?array $data, UrlInterface $url): void
     {
         if (null === $data['lastmod'] && null === $url->getLastMod()) {
@@ -139,10 +115,6 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         }
     }
 
-    /**
-     * @param UrlInterface $url
-     * @param array|null   $data
-     */
     private function assertPriority(UrlInterface $url, ?array $data): void
     {
         if ($url->getPriority() !== $data['priority']) {
@@ -157,10 +129,6 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         }
     }
 
-    /**
-     * @param UrlInterface $url
-     * @param array|null   $data
-     */
     private function assertChangeFreq(UrlInterface $url, ?array $data): void
     {
         if ($url->getChangeFreq() !== $data['changefreq']) {
