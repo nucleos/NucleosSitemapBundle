@@ -56,9 +56,6 @@ final class StaticSitemapServiceTest extends AbstractSitemapServiceTestCase
         $this->process($sitemap);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createService(): SitemapServiceInterface
     {
         return new StaticSitemapService();

@@ -43,9 +43,6 @@ final class SitemapGenerator implements SitemapGeneratorInterface
         $this->cache                 = $cache;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toXML(): string
     {
         $xml = '<?xml version="1.0" encoding="UTF-8"?>';

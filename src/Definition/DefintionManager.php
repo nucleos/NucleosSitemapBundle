@@ -25,9 +25,6 @@ final class DefintionManager implements DefintionManagerInterface
         $this->sitemaps = [];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addDefinition(string $id, array $configuration = []): DefintionManagerInterface
     {
         $this->add($id, new SitemapDefinition($id, $configuration));
@@ -35,9 +32,6 @@ final class DefintionManager implements DefintionManagerInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getAll(): array
     {
         return $this->sitemaps;

@@ -33,9 +33,6 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
      */
     private $urls = [];
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         $this->router = $this->createMock(RouterInterface::class);

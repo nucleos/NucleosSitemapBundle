@@ -32,9 +32,6 @@ abstract class AbstractSitemapService implements SitemapServiceInterface
         $this->router = $router;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver): void
     {
     }
