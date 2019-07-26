@@ -76,33 +76,21 @@ final class Url implements UrlInterface
         $this->priority   = $priority;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getChangeFreq(): ?string
     {
         return $this->changeFreq;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLastMod(): ?\DateTime
     {
         return $this->lastMod;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLoc(): string
     {
         return $this->loc;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPriority(): ?int
     {
         return $this->priority;

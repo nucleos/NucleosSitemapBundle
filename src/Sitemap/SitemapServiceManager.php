@@ -39,9 +39,6 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function get(SitemapDefinitionInterface $definition): ?SitemapServiceInterface
     {
         $sitemap = $this->getService($definition->getType());
@@ -55,9 +52,6 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
         return $sitemap;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addSitemap(string $id, SitemapServiceInterface $service): void
     {
         $this->services[$id] = $service;

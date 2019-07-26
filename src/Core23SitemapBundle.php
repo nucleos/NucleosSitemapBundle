@@ -17,9 +17,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 final class Core23SitemapBundle extends Bundle
 {
-    /**
-     * {@inheritdoc}
-     */
     public function build(ContainerBuilder $container): void
     {
         $container->addCompilerPass(new SitemapCompilerPass());

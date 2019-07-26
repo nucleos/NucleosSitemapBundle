@@ -17,9 +17,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class StaticSitemapService implements SitemapServiceInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver
@@ -32,9 +29,6 @@ final class StaticSitemapService implements SitemapServiceInterface
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function execute(SitemapDefinitionInterface $sitemap): array
     {
         if (null === $sitemap->getSetting('url')) {
