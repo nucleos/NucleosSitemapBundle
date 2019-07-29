@@ -30,12 +30,12 @@ final class SitemapGeneratorTest extends TestCase
 
     private $defintionManager;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         date_default_timezone_set('UTC');
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->sitemapServiceManager = $this->prophesize(SitemapServiceManagerInterface::class);
         $this->defintionManager      = $this->prophesize(DefintionManagerInterface::class);

@@ -30,7 +30,7 @@ final class SitemapCompilerPassTest extends TestCase
      */
     private $container;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->serviceManager = $this->prophesize(Definition::class);
         $this->serviceManager->hasTag('core23.sitemap')
