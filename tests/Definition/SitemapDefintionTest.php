@@ -10,7 +10,6 @@
 namespace Core23\SitemapBundle\Tests\Definition;
 
 use Core23\SitemapBundle\Definition\SitemapDefinition;
-use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
 use PHPUnit\Framework\TestCase;
 
 final class SitemapDefintionTest extends TestCase
@@ -19,7 +18,6 @@ final class SitemapDefintionTest extends TestCase
     {
         $definition = new SitemapDefinition('acme.sitemap');
 
-        static::assertInstanceOf(SitemapDefinitionInterface::class, $definition);
         static::assertSame('acme.sitemap', $definition->getType());
         static::assertSame('acme.sitemap', $definition->toString());
         static::assertSame('acme.sitemap', $definition->__toString());

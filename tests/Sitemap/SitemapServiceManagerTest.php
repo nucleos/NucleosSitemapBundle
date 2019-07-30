@@ -14,26 +14,18 @@ use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
 use Core23\SitemapBundle\Exception\SitemapNotFoundException;
 use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
 use Core23\SitemapBundle\Sitemap\SitemapServiceManager;
-use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
 use Core23\SitemapBundle\Tests\Fixtures\SitemapService;
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use stdClass;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
+use TypeError;
 
 final class SitemapServiceManagerTest extends TestCase
 {
-    public function testItIsInstantiable(): void
-    {
-        $manager = new SitemapServiceManager();
-
-        static::assertInstanceOf(SitemapServiceManagerInterface::class, $manager);
-    }
-
     public function testCreationWithInvalidServices(): void
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The "stdClass" service is not a valid SitemapServiceInterface');
+        $this->expectException(TypeError::class);
 
         new SitemapServiceManager([
             'invalid' => new stdClass(),
@@ -126,6 +118,13 @@ final class SitemapServiceManagerTest extends TestCase
         $manager = new SitemapServiceManager();
         $manager->addSitemap('my-type', $service->reveal());
 
-        static::assertTrue(true);
+        $reflection       = new ReflectionClass($manager);
+
+        $servicesProperty = $reflection->getProperty('services');
+        $servicesProperty->setAccessible(true);
+
+        static::assertSame([
+            'my-type' => $service->reveal(),
+        ], $servicesProperty->getValue($manager));
     }
 }

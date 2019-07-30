@@ -16,11 +16,15 @@ use Core23\SitemapBundle\Model\UrlInterface;
 use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
 use DateTime;
 use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\RouterInterface;
 
 abstract class AbstractSitemapServiceTestCase extends TestCase
 {
+    /**
+     * @var MockObject&RouterInterface
+     */
     protected $router;
 
     /**
@@ -105,7 +109,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
 
         \assert($data['lastmod'] instanceof \DateTime);
 
-        if ($url->getLastMod() <=> $data['lastmod']) {
+        if (null === $url->getLastMod() || $url->getLastMod() > $data['lastmod'] || $url->getLastMod() < $data['lastmod']) {
             throw new AssertionFailedError(
                 sprintf("The url '%s' was expected with a different lastmod.", $url->getLoc())
             );
