@@ -10,19 +10,11 @@
 namespace Core23\SitemapBundle\Tests\Definition;
 
 use Core23\SitemapBundle\Definition\DefintionManager;
-use Core23\SitemapBundle\Definition\DefintionManagerInterface;
 use Core23\SitemapBundle\Definition\SitemapDefinition;
 use PHPUnit\Framework\TestCase;
 
 final class DefinitionManagerTest extends TestCase
 {
-    public function testItIsInstantiable(): void
-    {
-        $definition = new DefintionManager();
-
-        static::assertInstanceOf(DefintionManagerInterface::class, $definition);
-    }
-
     public function testAddDefintion(): void
     {
         $definition = new DefintionManager();

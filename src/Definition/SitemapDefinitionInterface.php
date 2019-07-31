@@ -44,6 +44,8 @@ interface SitemapDefinitionInterface
      *
      * @param string     $name    Key name
      * @param mixed|null $default Default value
+     *
+     * @return mixed|null
      */
     public function getSetting(string $name, $default = null);
 }

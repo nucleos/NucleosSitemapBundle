@@ -61,7 +61,7 @@ final class SitemapDefinition implements SitemapDefinitionInterface
 
     public function getTtl(): int
     {
-        if (!$this->getSetting('use_cache', true)) {
+        if (true !== $this->getSetting('use_cache', true)) {
             return 0;
         }
 

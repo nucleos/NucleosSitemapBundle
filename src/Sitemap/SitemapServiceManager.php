@@ -13,7 +13,6 @@ namespace Core23\SitemapBundle\Sitemap;
 
 use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
 use Core23\SitemapBundle\Exception\SitemapNotFoundException;
-use InvalidArgumentException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class SitemapServiceManager implements SitemapServiceManagerInterface
@@ -31,10 +30,6 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
         $this->services = [];
 
         foreach ($services as $id => $service) {
-            if (!$service instanceof SitemapServiceInterface) {
-                throw new InvalidArgumentException(sprintf('The "%s" service is not a valid SitemapServiceInterface', \get_class($service)));
-            }
-
             $this->addSitemap($id, $service);
         }
     }

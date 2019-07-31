@@ -11,16 +11,17 @@ namespace Core23\SitemapBundle\Tests;
 
 use Core23\SitemapBundle\Core23SitemapBundle;
 use Core23\SitemapBundle\DependencyInjection\Compiler\SitemapCompilerPass;
+use Core23\SitemapBundle\DependencyInjection\Core23SitemapExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class Core23SitemapBundleTest extends TestCase
 {
-    public function testItIsInstantiable(): void
+    public function testGetContainerExtension(): void
     {
         $bundle = new Core23SitemapBundle();
 
-        static::assertInstanceOf(Core23SitemapBundle::class, $bundle);
+        static::assertInstanceOf(Core23SitemapExtension::class, $bundle->getContainerExtension());
     }
 
     public function testBuild(): void

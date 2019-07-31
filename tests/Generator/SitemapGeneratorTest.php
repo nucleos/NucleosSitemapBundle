@@ -12,7 +12,6 @@ namespace Core23\SitemapBundle\Tests\Generator;
 use Core23\SitemapBundle\Definition\DefintionManagerInterface;
 use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
 use Core23\SitemapBundle\Generator\SitemapGenerator;
-use Core23\SitemapBundle\Generator\SitemapGeneratorInterface;
 use Core23\SitemapBundle\Model\Url;
 use Core23\SitemapBundle\Model\UrlInterface;
 use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
@@ -30,25 +29,15 @@ final class SitemapGeneratorTest extends TestCase
 
     private $defintionManager;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         date_default_timezone_set('UTC');
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->sitemapServiceManager = $this->prophesize(SitemapServiceManagerInterface::class);
         $this->defintionManager      = $this->prophesize(DefintionManagerInterface::class);
-    }
-
-    public function testItIsInstantiable(): void
-    {
-        $generator = new SitemapGenerator(
-            $this->sitemapServiceManager->reveal(),
-            $this->defintionManager->reveal()
-        );
-
-        static::assertInstanceOf(SitemapGeneratorInterface::class, $generator);
     }
 
     public function testToXMLWithInvalidDefinition(): void

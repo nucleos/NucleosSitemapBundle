@@ -88,7 +88,7 @@ final class Core23SitemapExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderHasService(SitemapGenerator::class);
     }
 
-    private function assertSitemap()
+    private function assertSitemap(): void
     {
         $this->assertContainerBuilderHasService(StaticSitemapService::class);
     }

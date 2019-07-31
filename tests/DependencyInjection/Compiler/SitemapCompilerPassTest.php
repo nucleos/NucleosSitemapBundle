@@ -30,7 +30,7 @@ final class SitemapCompilerPassTest extends TestCase
      */
     private $container;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->serviceManager = $this->prophesize(Definition::class);
         $this->serviceManager->hasTag('core23.sitemap')
@@ -70,6 +70,8 @@ final class SitemapCompilerPassTest extends TestCase
         $compiler->process($this->container);
 
         static::assertTrue($sitemapDefinition->isPublic());
+
+        $this->definitionManager->addMethodCall('addDefintion', Argument::any())->shouldNotHaveBeenCalled();
     }
 
     public function testProcessWithNoServices(): void
@@ -79,7 +81,9 @@ final class SitemapCompilerPassTest extends TestCase
         $compiler = new SitemapCompilerPass();
         $compiler->process($this->container);
 
-        static::assertTrue(true);
+        static::assertSame([], $this->container->getParameter('core23_sitemap.static_urls'));
+
+        $this->definitionManager->addMethodCall('addDefintion', Argument::any())->shouldNotHaveBeenCalled();
     }
 
     public function testProcessWithStaticUrls(): void
