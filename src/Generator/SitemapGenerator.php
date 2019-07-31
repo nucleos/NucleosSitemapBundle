@@ -52,13 +52,9 @@ final class SitemapGenerator implements SitemapGeneratorInterface
 
         foreach ($this->defintionManager->getAll() as $sitemap) {
             try {
-                $serviceXml = $this->fetch($sitemap);
+                $xml .= $this->fetch($sitemap);
             } catch (InvalidArgumentException $exception) {
                 throw new RuntimeException('Error accessing cache', $exception->getCode(), $exception);
-            }
-
-            if ($serviceXml) {
-                $xml .= $serviceXml;
             }
         }
 
@@ -76,13 +72,13 @@ final class SitemapGenerator implements SitemapGeneratorInterface
     {
         $name = sprintf('Sitemap_%s', md5(serialize($definition)));
 
-        if ($this->cache && $this->cache->has($name)) {
+        if (null !== $this->cache && $this->cache->has($name)) {
             return $this->cache->get($name);
         }
 
         $service = $this->sitemapServiceManager->get($definition);
 
-        if (!$service) {
+        if (null === $service) {
             return '';
         }
 
@@ -91,7 +87,7 @@ final class SitemapGenerator implements SitemapGeneratorInterface
             $xml .= $this->getLocEntry($entry);
         }
 
-        if ($this->cache) {
+        if (null !== $this->cache) {
             $this->cache->set($name, $xml, $definition->getTtl());
         }
 
