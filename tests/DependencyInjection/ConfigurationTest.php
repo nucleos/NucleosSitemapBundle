@@ -63,6 +63,6 @@ final class ConfigurationTest extends TestCase
             ],
         ];
 
-        static::assertArraySubset($expected, $config);
+        static::assertSame($expected, $config);
     }
 }
