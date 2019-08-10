@@ -17,9 +17,6 @@ interface UrlInterface
 
     public function getLastMod(): ?\DateTime;
 
-    /**
-     * @return string
-     */
     public function getLoc(): ?string;
 
     public function getPriority(): ?int;
