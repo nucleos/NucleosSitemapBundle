@@ -1,0 +1,11 @@
+framework:
+    secret: secret
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Core23\SitemapBundle\Tests\App\Sitemap\DemoSitemap:
+        tags: ['core23.sitemap']
+
