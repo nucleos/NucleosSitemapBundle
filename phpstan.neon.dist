@@ -16,7 +16,6 @@ parameters:
         # Symfony DI
         - '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition::children\(\).#'
         - '#Cannot call method end\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
-        - "/Call to function method_exists.. with 'Symfony.+' and 'getRootNode' will always evaluate to false./"
 
         # PHPUnit
         -
