@@ -8,10 +8,8 @@ SitemapBundle
 [![Monthly Downloads](https://poser.pugx.org/core23/sitemap-bundle/d/monthly)](https://packagist.org/packages/core23/sitemap-bundle)
 [![Daily Downloads](https://poser.pugx.org/core23/sitemap-bundle/d/daily)](https://packagist.org/packages/core23/sitemap-bundle)
 
-[![Build Status](https://travis-ci.org/core23/SitemapBundle.svg)](https://travis-ci.org/core23/SitemapBundle)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/core23/SitemapBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/core23/SitemapBundle)
-[![Code Climate](https://codeclimate.com/github/core23/SitemapBundle/badges/gpa.svg)](https://codeclimate.com/github/core23/SitemapBundle)
-[![Coverage Status](https://coveralls.io/repos/core23/SitemapBundle/badge.svg)](https://coveralls.io/r/core23/SitemapBundle)
+[![Continuous Integration](https://github.com/core23/SitemapBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/core23/SitemapBundle/actions)
+[![Code Coverage](https://codecov.io/gh/core23/SitemapBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/core23/SitemapBundle)
 
 This bundle provides some classes for an automatic **sitemap.xml** generation.
 
@@ -88,7 +86,7 @@ core23_sitemap:
 
 ### Add a custom sitemap
 
-If you want to create a custom sitemap, the only thing you have to do is to create a service that uses 
+If you want to create a custom sitemap, the only thing you have to do is to create a service that uses
 `Core23\SitemapBundle\Sitemap\SitemapServiceInterface` and tag the service with `core23.sitemap`.
 
 ```xml
