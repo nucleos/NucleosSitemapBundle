@@ -14,9 +14,9 @@ use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
 use Core23\SitemapBundle\Exception\SitemapNotFoundException;
 use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
 use Core23\SitemapBundle\Sitemap\SitemapServiceManager;
+use Core23\SitemapBundle\Tests\Fixtures\SitemapDefinitionStub;
 use Core23\SitemapBundle\Tests\Fixtures\SitemapService;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 use stdClass;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 use TypeError;
@@ -118,13 +118,8 @@ final class SitemapServiceManagerTest extends TestCase
         $manager = new SitemapServiceManager();
         $manager->addSitemap('my-type', $service->reveal());
 
-        $reflection       = new ReflectionClass($manager);
+        $definition = new SitemapDefinitionStub('my-type');
 
-        $servicesProperty = $reflection->getProperty('services');
-        $servicesProperty->setAccessible(true);
-
-        static::assertSame([
-            'my-type' => $service->reveal(),
-        ], $servicesProperty->getValue($manager));
+        static::assertSame($service->reveal(), $manager->get($definition));
     }
 }
