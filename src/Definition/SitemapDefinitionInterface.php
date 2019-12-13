@@ -28,14 +28,14 @@ interface SitemapDefinitionInterface
     /**
      * Sets the block settings.
      *
-     * @param array $settings An array of key/value
+     * @param array<string, mixed> $settings An array of key/value
      */
     public function setSettings(array $settings = []): void;
 
     /**
      * Returns the block settings.
      *
-     * @return array $settings An array of key/value
+     * @return array<string, mixed> $settings An array of key/value
      */
     public function getSettings(): array;
 

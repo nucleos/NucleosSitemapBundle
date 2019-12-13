@@ -50,7 +50,7 @@ final class SitemapCompilerPassTest extends TestCase
 
     public function testProcess(): void
     {
-        $this->serviceManager->addMethodCall('addSitemap', Argument::that(static function ($args) {
+        $this->serviceManager->addMethodCall('addSitemap', Argument::that(static function (array $args): bool {
             return 'acme.sitemap' === $args[0] && $args[1] instanceof Reference;
         }))
         ->shouldBeCalled()

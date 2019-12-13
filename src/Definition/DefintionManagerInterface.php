@@ -22,6 +22,8 @@ interface DefintionManagerInterface
 
     /**
      * Adds a sitemap definition.
+     *
+     * @param array<string, mixed> $configuration
      */
     public function addDefinition(string $id, array $configuration = []): self;
 }

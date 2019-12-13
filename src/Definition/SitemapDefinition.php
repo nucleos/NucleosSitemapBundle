@@ -14,7 +14,7 @@ namespace Core23\SitemapBundle\Definition;
 final class SitemapDefinition implements SitemapDefinitionInterface
 {
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     private $settings;
 
@@ -23,6 +23,9 @@ final class SitemapDefinition implements SitemapDefinitionInterface
      */
     private $type;
 
+    /**
+     * @param array<string, mixed> $settings
+     */
     public function __construct(string $type, array $settings = [])
     {
         $this->settings = $settings;
@@ -36,7 +39,7 @@ final class SitemapDefinition implements SitemapDefinitionInterface
 
     public function toString(): string
     {
-        return $this->getType() ?: 'n/a';
+        return $this->getType();
     }
 
     public function getType(): string
