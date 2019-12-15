@@ -46,32 +46,6 @@ core23_sitemap:
     prefix: /
 ```
 
-### Caching
-
-If you want to use caching, you need to add the caching bundle:
-
-```
-composer require cache/cache-bundle
-composer require cache/doctrine-adapter # If you want a doctrine cache
-```
-
-Create a configuration file called `core23_sitemap.yaml`:
-
-```yaml
-# config/packages/core23_sitemap.yaml
-
-core23_sitemap:
-    cache:
-        service: 'cache.provider.sitemap_cache'
-
-cache_adapter:
-    providers:
-        sitemap_cache:
-            factory: 'cache.factory.doctrine_filesystem'
-            options:
-                directory: '%kernel.cache_dir%/cache'
-```
-
 ### Add static entries
 
 You can add static entries in your yaml config:
