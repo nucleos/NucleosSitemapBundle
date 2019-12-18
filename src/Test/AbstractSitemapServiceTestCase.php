@@ -101,7 +101,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         return -1;
     }
 
-    private function assertLastmod(?array $data, UrlInterface $url): void
+    private function assertLastmod(array $data, UrlInterface $url): void
     {
         if (null === $data['lastmod'] && null === $url->getLastMod()) {
             return;
@@ -116,7 +116,10 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         }
     }
 
-    private function assertPriority(UrlInterface $url, ?array $data): void
+    /**
+     * @param array<int|null> $data
+     */
+    private function assertPriority(UrlInterface $url, array $data = []): void
     {
         if ($url->getPriority() !== $data['priority']) {
             throw new AssertionFailedError(
@@ -130,7 +133,10 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         }
     }
 
-    private function assertChangeFreq(UrlInterface $url, ?array $data): void
+    /**
+     * @param array<string|null> $data
+     */
+    private function assertChangeFreq(UrlInterface $url, array $data = []): void
     {
         if ($url->getChangeFreq() !== $data['changefreq']) {
             throw new AssertionFailedError(

@@ -46,5 +46,6 @@ final class SitemapDefinitionStub implements SitemapDefinitionInterface
 
     public function getSetting(string $name, $default = null)
     {
+        return $default;
     }
 }

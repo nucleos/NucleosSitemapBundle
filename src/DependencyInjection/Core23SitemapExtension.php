@@ -20,6 +20,9 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 final class Core23SitemapExtension extends Extension
 {
+    /**
+     * @param array<mixed> $configs
+     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
@@ -34,6 +37,9 @@ final class Core23SitemapExtension extends Extension
         $this->configureStaticUrls($container, $config);
     }
 
+    /**
+     * @param array<mixed> $config
+     */
     private function configureCache(ContainerBuilder $container, array $config): void
     {
         if (null === $config['cache']['service']) {
@@ -45,6 +51,9 @@ final class Core23SitemapExtension extends Extension
         ;
     }
 
+    /**
+     * @param array<mixed> $config
+     */
     private function configureStaticUrls(ContainerBuilder $container, array $config): void
     {
         $container->setParameter('core23_sitemap.static_urls', $config['static']);
