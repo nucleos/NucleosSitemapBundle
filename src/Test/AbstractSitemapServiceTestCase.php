@@ -107,7 +107,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
             return;
         }
 
-        \assert($data['lastmod'] instanceof \DateTime);
+        \assert($data['lastmod'] instanceof DateTime);
 
         if (null === $url->getLastMod() || $url->getLastMod() > $data['lastmod'] || $url->getLastMod() < $data['lastmod']) {
             throw new AssertionFailedError(

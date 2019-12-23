@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Model;
 
+use DateTime;
+
 final class Url implements UrlInterface
 {
     /**
@@ -54,7 +56,7 @@ final class Url implements UrlInterface
     private $loc;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     private $lastMod;
 
@@ -68,7 +70,7 @@ final class Url implements UrlInterface
      */
     private $priority;
 
-    public function __construct(string $loc, ?int $priority = null, ?string $changeFreq = null, ?\DateTime $lastMod = null)
+    public function __construct(string $loc, ?int $priority = null, ?string $changeFreq = null, ?DateTime $lastMod = null)
     {
         $this->loc        = $loc;
         $this->lastMod    = $lastMod;
@@ -81,7 +83,7 @@ final class Url implements UrlInterface
         return $this->changeFreq;
     }
 
-    public function getLastMod(): ?\DateTime
+    public function getLastMod(): ?DateTime
     {
         return $this->lastMod;
     }
