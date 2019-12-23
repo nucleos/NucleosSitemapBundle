@@ -17,14 +17,21 @@ use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
 use Core23\SitemapBundle\Sitemap\StaticSitemapService;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
 final class SitemapCompilerPassTest extends TestCase
 {
+    /**
+     * @var ObjectProphecy
+     */
     private $serviceManager;
 
+    /**
+     * @var ObjectProphecy
+     */
     private $definitionManager;
 
     /**

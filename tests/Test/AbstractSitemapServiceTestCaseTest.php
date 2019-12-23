@@ -17,9 +17,13 @@ use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
 use Core23\SitemapBundle\Test\AbstractSitemapServiceTestCase as ParentTestCase;
 use DateTime;
 use PHPUnit\Framework\AssertionFailedError;
+use Prophecy\Prophecy\ObjectProphecy;
 
 final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 {
+    /**
+     * @var ObjectProphecy
+     */
     private $serviceMock;
 
     protected function setUp(): void

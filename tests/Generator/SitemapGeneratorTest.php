@@ -22,13 +22,20 @@ use Core23\SitemapBundle\Tests\Fixtures\SitemapDefinitionStub;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\Prophecy\ObjectProphecy;
 use Psr\SimpleCache\CacheInterface;
 use RuntimeException;
 
 final class SitemapGeneratorTest extends TestCase
 {
+    /**
+     * @var ObjectProphecy
+     */
     private $sitemapServiceManager;
 
+    /**
+     * @var ObjectProphecy
+     */
     private $defintionManager;
 
     public static function setUpBeforeClass(): void

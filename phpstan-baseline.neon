@@ -41,23 +41,13 @@ parameters:
 			path: tests/Action/SitemapXMLActionIntegrationTest.php
 
 		-
-			message: "#^Property Core23\\\\SitemapBundle\\\\Tests\\\\DependencyInjection\\\\Compiler\\\\SitemapCompilerPassTest\\:\\:\\$serviceManager has no typehint specified\\.$#"
-			count: 1
-			path: tests/DependencyInjection/Compiler/SitemapCompilerPassTest.php
-
-		-
-			message: "#^Property Core23\\\\SitemapBundle\\\\Tests\\\\DependencyInjection\\\\Compiler\\\\SitemapCompilerPassTest\\:\\:\\$definitionManager has no typehint specified\\.$#"
-			count: 1
-			path: tests/DependencyInjection/Compiler/SitemapCompilerPassTest.php
-
-		-
-			message: "#^Property Core23\\\\SitemapBundle\\\\Tests\\\\Generator\\\\SitemapGeneratorTest\\:\\:\\$sitemapServiceManager has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$sitemapServiceManager of class Core23\\\\SitemapBundle\\\\Generator\\\\SitemapGenerator constructor expects Core23\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceManagerInterface, object given\\.$#"
+			count: 6
 			path: tests/Generator/SitemapGeneratorTest.php
 
 		-
-			message: "#^Property Core23\\\\SitemapBundle\\\\Tests\\\\Generator\\\\SitemapGeneratorTest\\:\\:\\$defintionManager has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#2 \\$defintionManager of class Core23\\\\SitemapBundle\\\\Generator\\\\SitemapGenerator constructor expects Core23\\\\SitemapBundle\\\\Definition\\\\DefintionManagerInterface, object given\\.$#"
+			count: 6
 			path: tests/Generator/SitemapGeneratorTest.php
 
 		-
@@ -66,7 +56,7 @@ parameters:
 			path: tests/Sitemap/SitemapServiceManagerTest.php
 
 		-
-			message: "#^Property Core23\\\\SitemapBundle\\\\Tests\\\\Test\\\\AbstractSitemapServiceTestCaseTest\\:\\:\\$serviceMock has no typehint specified\\.$#"
+			message: "#^Method Core23\\\\SitemapBundle\\\\Tests\\\\Test\\\\AbstractSitemapServiceTestCaseTest\\:\\:createService\\(\\) should return Core23\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceInterface but returns object\\.$#"
 			count: 1
 			path: tests/Test/AbstractSitemapServiceTestCaseTest.php
 
