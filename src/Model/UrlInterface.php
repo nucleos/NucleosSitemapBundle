@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Core23\SitemapBundle\Model;
 
+use DateTime;
+
 interface UrlInterface
 {
     public function getChangeFreq(): ?string;
 
-    public function getLastMod(): ?\DateTime;
+    public function getLastMod(): ?DateTime;
 
     public function getLoc(): ?string;
 
