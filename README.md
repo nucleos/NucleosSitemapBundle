@@ -46,6 +46,28 @@ core23_sitemap:
     prefix: /
 ```
 
+If you want to use symfony cache, you should define a new cache pool (PSR 6) and create an adapter to map it to a simple cache (PSR 16):
+
+```yaml
+core23_sitemap:
+    cache:
+        service: 'sitemap.cache.adapter'
+
+framework:
+    cache:
+        pools:
+            sitemap.cache:
+                adapter: cache.app
+                default_lifetime: 60
+
+services:
+    sitemap.cache.adapter:
+        class: 'Symfony\Component\Cache\Adapter\Psr16Adapter'
+        arguments:
+            - '@sitemap.cache'
+```
+
+
 ### Add static entries
 
 You can add static entries in your yaml config:
