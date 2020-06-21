@@ -9,7 +9,7 @@ NucleosSitemapBundle
 [![Daily Downloads](https://poser.pugx.org/nucleos/sitemap-bundle/d/daily)](https://packagist.org/packages/nucleos/sitemap-bundle)
 
 [![Continuous Integration](https://github.com/nucleos/NucleosSitemapBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/NucleosSitemapBundle/actions)
-[![Code Coverage](https://codecov.io/gh/nucleos/NucleosSitemapBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosSitemapBundle)
+[![Code Coverage](https://codecov.io/gh/nucleos/NucleosSitemapBundle/branch/main/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosSitemapBundle)
 
 This bundle provides some classes for an automatic **sitemap.xml** generation.
 
