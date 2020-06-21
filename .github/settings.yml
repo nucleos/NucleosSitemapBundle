@@ -24,6 +24,10 @@ branches:
           - "Tests (7.4, lowest, ~5.0)"
           - "Tests (7.4, highest, ~4.2)"
           - "Tests (7.4, highest, ~5.0)"
+          - "Tests (8.0, lowest, ~4.2)"
+          - "Tests (8.0, lowest, ~5.0)"
+          - "Tests (8.0, highest, ~4.2)"
+          - "Tests (8.0, highest, ~5.0)"
           - "Code Coverage (7.4)"
           - "Mutation Tests (7.4)"
         strict: true
