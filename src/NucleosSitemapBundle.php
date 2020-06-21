@@ -9,13 +9,13 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle;
+namespace Nucleos\SitemapBundle;
 
-use Core23\SitemapBundle\DependencyInjection\Compiler\SitemapCompilerPass;
+use Nucleos\SitemapBundle\DependencyInjection\Compiler\SitemapCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class Core23SitemapBundle extends Bundle
+final class NucleosSitemapBundle extends Bundle
 {
     public function build(ContainerBuilder $container): void
     {

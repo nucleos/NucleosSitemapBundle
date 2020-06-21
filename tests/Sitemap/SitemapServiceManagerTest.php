@@ -9,15 +9,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\Sitemap;
+namespace Nucleos\SitemapBundle\Tests\Sitemap;
 
-use Core23\SitemapBundle\Definition\SitemapDefinition;
-use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
-use Core23\SitemapBundle\Exception\SitemapNotFoundException;
-use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
-use Core23\SitemapBundle\Sitemap\SitemapServiceManager;
-use Core23\SitemapBundle\Tests\Fixtures\SitemapDefinitionStub;
-use Core23\SitemapBundle\Tests\Fixtures\SitemapService;
+use Nucleos\SitemapBundle\Definition\SitemapDefinition;
+use Nucleos\SitemapBundle\Definition\SitemapDefinitionInterface;
+use Nucleos\SitemapBundle\Exception\SitemapNotFoundException;
+use Nucleos\SitemapBundle\Sitemap\SitemapServiceInterface;
+use Nucleos\SitemapBundle\Sitemap\SitemapServiceManager;
+use Nucleos\SitemapBundle\Tests\Fixtures\SitemapDefinitionStub;
+use Nucleos\SitemapBundle\Tests\Fixtures\SitemapService;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;

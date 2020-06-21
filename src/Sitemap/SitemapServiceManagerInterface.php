@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Sitemap;
+namespace Nucleos\SitemapBundle\Sitemap;
 
-use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
+use Nucleos\SitemapBundle\Definition\SitemapDefinitionInterface;
 
 interface SitemapServiceManagerInterface
 {

@@ -9,11 +9,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Sitemap;
+namespace Nucleos\SitemapBundle\Sitemap;
 
-use Core23\SitemapBundle\Model\Url;
-use Core23\SitemapBundle\Model\UrlInterface;
 use DateTime;
+use Nucleos\SitemapBundle\Model\Url;
+use Nucleos\SitemapBundle\Model\UrlInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;

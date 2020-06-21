@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\App;
+namespace Nucleos\SitemapBundle\Tests\App;
 
-use Core23\SitemapBundle\Core23SitemapBundle;
+use Nucleos\SitemapBundle\NucleosSitemapBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -32,7 +32,7 @@ final class AppKernel extends Kernel
     {
         return [
             new FrameworkBundle(),
-            new Core23SitemapBundle(),
+            new NucleosSitemapBundle(),
         ];
     }
 

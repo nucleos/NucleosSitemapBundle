@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Exception;
+namespace Nucleos\SitemapBundle\Exception;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 

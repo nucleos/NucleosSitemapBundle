@@ -9,17 +9,17 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\Generator;
+namespace Nucleos\SitemapBundle\Tests\Generator;
 
-use Core23\SitemapBundle\Definition\DefintionManagerInterface;
-use Core23\SitemapBundle\Generator\SitemapGenerator;
-use Core23\SitemapBundle\Model\Url;
-use Core23\SitemapBundle\Model\UrlInterface;
-use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
-use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
-use Core23\SitemapBundle\Tests\Fixtures\InvalidArgumentException;
-use Core23\SitemapBundle\Tests\Fixtures\SitemapDefinitionStub;
 use DateTime;
+use Nucleos\SitemapBundle\Definition\DefintionManagerInterface;
+use Nucleos\SitemapBundle\Generator\SitemapGenerator;
+use Nucleos\SitemapBundle\Model\Url;
+use Nucleos\SitemapBundle\Model\UrlInterface;
+use Nucleos\SitemapBundle\Sitemap\SitemapServiceInterface;
+use Nucleos\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
+use Nucleos\SitemapBundle\Tests\Fixtures\InvalidArgumentException;
+use Nucleos\SitemapBundle\Tests\Fixtures\SitemapDefinitionStub;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
@@ -103,7 +103,7 @@ final class SitemapGeneratorTest extends TestCase
         $expected .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ';
         $expected .= 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
         $expected .= 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
-        $expected .= '<url><loc>http://core23.de</loc><lastmod>2017-12-23T00:00:00+00:00</lastmod><changefreq>daily</changefreq><priority>80</priority></url>';
+        $expected .= '<url><loc>http://nucleos.rocks</loc><lastmod>2017-12-23T00:00:00+00:00</lastmod><changefreq>daily</changefreq><priority>80</priority></url>';
         $expected .= '</urlset>';
 
         $definition = new SitemapDefinitionStub('foo');
@@ -116,7 +116,7 @@ final class SitemapGeneratorTest extends TestCase
             ->willReturn(new DateTime('2017-12-23 00:00:00'))
         ;
         $url->getLoc()
-            ->willReturn('http://core23.de')
+            ->willReturn('http://nucleos.rocks')
         ;
         $url->getPriority()
             ->willReturn(80)
@@ -149,7 +149,7 @@ final class SitemapGeneratorTest extends TestCase
 
     public function testToXMLWithExistingCache(): void
     {
-        $xmlEntry = '<url><loc>http://core23.de</loc><lastmod>2017-12-23T00:00:00+00:00</lastmod><changefreq>daily</changefreq><priority>80</priority></url>';
+        $xmlEntry = '<url><loc>http://nucleos.rocks</loc><lastmod>2017-12-23T00:00:00+00:00</lastmod><changefreq>daily</changefreq><priority>80</priority></url>';
 
         $expected = '<?xml version="1.0" encoding="UTF-8"?>';
         $expected .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ';
@@ -168,7 +168,7 @@ final class SitemapGeneratorTest extends TestCase
             ->willReturn(new DateTime('2017-12-23 00:00:00'))
         ;
         $url->getLoc()
-            ->willReturn('http://core23.de')
+            ->willReturn('http://nucleos.rocks')
         ;
         $url->getPriority()
             ->willReturn(80)
@@ -205,7 +205,7 @@ final class SitemapGeneratorTest extends TestCase
 
     public function testToXMLWithExpiredCache(): void
     {
-        $xmlEntry = '<url><loc>http://core23.de</loc><lastmod>2017-12-23T00:00:00+00:00</lastmod><changefreq>daily</changefreq><priority>80</priority></url>';
+        $xmlEntry = '<url><loc>http://nucleos.rocks</loc><lastmod>2017-12-23T00:00:00+00:00</lastmod><changefreq>daily</changefreq><priority>80</priority></url>';
 
         $expected = '<?xml version="1.0" encoding="UTF-8"?>';
         $expected .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ';
@@ -224,7 +224,7 @@ final class SitemapGeneratorTest extends TestCase
             ->willReturn(new DateTime('2017-12-23'))
         ;
         $url->getLoc()
-            ->willReturn('http://core23.de')
+            ->willReturn('http://nucleos.rocks')
         ;
         $url->getPriority()
             ->willReturn(80)

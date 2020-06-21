@@ -6,6 +6,6 @@ services:
         autowire: true
         autoconfigure: true
 
-    Core23\SitemapBundle\Tests\App\Sitemap\DemoSitemap:
-        tags: ['core23.sitemap']
+    Nucleos\SitemapBundle\Tests\App\Sitemap\DemoSitemap:
+        tags: ['nucleos.sitemap']
 

@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\Fixtures;
+namespace Nucleos\SitemapBundle\Tests\Fixtures;
 
-use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
+use Nucleos\SitemapBundle\Definition\SitemapDefinitionInterface;
 
 final class SitemapDefinitionStub implements SitemapDefinitionInterface
 {

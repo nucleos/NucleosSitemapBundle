@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Definition;
+namespace Nucleos\SitemapBundle\Definition;
 
 final class SitemapDefinition implements SitemapDefinitionInterface
 {

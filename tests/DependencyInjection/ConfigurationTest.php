@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\DependencyInjection;
+namespace Nucleos\SitemapBundle\Tests\DependencyInjection;
 
-use Core23\SitemapBundle\DependencyInjection\Configuration;
+use Nucleos\SitemapBundle\DependencyInjection\Configuration;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Processor;
 

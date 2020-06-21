@@ -9,21 +9,21 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests;
+namespace Nucleos\SitemapBundle\Tests;
 
-use Core23\SitemapBundle\Core23SitemapBundle;
-use Core23\SitemapBundle\DependencyInjection\Compiler\SitemapCompilerPass;
-use Core23\SitemapBundle\DependencyInjection\Core23SitemapExtension;
+use Nucleos\SitemapBundle\DependencyInjection\Compiler\SitemapCompilerPass;
+use Nucleos\SitemapBundle\DependencyInjection\NucleosSitemapExtension;
+use Nucleos\SitemapBundle\NucleosSitemapBundle;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-final class Core23SitemapBundleTest extends TestCase
+final class NucleosSitemapBundleTest extends TestCase
 {
     public function testGetContainerExtension(): void
     {
-        $bundle = new Core23SitemapBundle();
+        $bundle = new NucleosSitemapBundle();
 
-        static::assertInstanceOf(Core23SitemapExtension::class, $bundle->getContainerExtension());
+        static::assertInstanceOf(NucleosSitemapExtension::class, $bundle->getContainerExtension());
     }
 
     public function testBuild(): void
@@ -34,7 +34,7 @@ final class Core23SitemapBundleTest extends TestCase
             ->with(static::isInstanceOf(SitemapCompilerPass::class))
         ;
 
-        $bundle = new Core23SitemapBundle();
+        $bundle = new NucleosSitemapBundle();
         $bundle->build($containerBuilder);
     }
 }

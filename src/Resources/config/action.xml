@@ -2,8 +2,8 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
     <defaults public="true"/>
-    <service id="Core23\SitemapBundle\Action\SitemapXMLAction">
-      <argument type="service" id="Core23\SitemapBundle\Generator\SitemapGenerator"/>
+    <service id="Nucleos\SitemapBundle\Action\SitemapXMLAction">
+      <argument type="service" id="Nucleos\SitemapBundle\Generator\SitemapGenerator"/>
     </service>
   </services>
 </container>

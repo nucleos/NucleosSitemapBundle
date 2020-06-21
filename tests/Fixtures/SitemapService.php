@@ -9,11 +9,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\Fixtures;
+namespace Nucleos\SitemapBundle\Tests\Fixtures;
 
-use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
-use Core23\SitemapBundle\Model\UrlInterface;
-use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
+use Nucleos\SitemapBundle\Definition\SitemapDefinitionInterface;
+use Nucleos\SitemapBundle\Model\UrlInterface;
+use Nucleos\SitemapBundle\Sitemap\SitemapServiceInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class SitemapService implements SitemapServiceInterface

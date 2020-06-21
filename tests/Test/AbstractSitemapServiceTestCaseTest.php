@@ -9,13 +9,13 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\Test;
+namespace Nucleos\SitemapBundle\Tests\Test;
 
-use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
-use Core23\SitemapBundle\Model\Url;
-use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
-use Core23\SitemapBundle\Test\AbstractSitemapServiceTestCase as ParentTestCase;
 use DateTime;
+use Nucleos\SitemapBundle\Definition\SitemapDefinitionInterface;
+use Nucleos\SitemapBundle\Model\Url;
+use Nucleos\SitemapBundle\Sitemap\SitemapServiceInterface;
+use Nucleos\SitemapBundle\Test\AbstractSitemapServiceTestCase as ParentTestCase;
 use PHPUnit\Framework\AssertionFailedError;
 use Prophecy\Prophecy\ObjectProphecy;
 

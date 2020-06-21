@@ -9,12 +9,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Generator;
+namespace Nucleos\SitemapBundle\Generator;
 
-use Core23\SitemapBundle\Definition\DefintionManagerInterface;
-use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
-use Core23\SitemapBundle\Model\UrlInterface;
-use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
+use Nucleos\SitemapBundle\Definition\DefintionManagerInterface;
+use Nucleos\SitemapBundle\Definition\SitemapDefinitionInterface;
+use Nucleos\SitemapBundle\Model\UrlInterface;
+use Nucleos\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
 use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
 use RuntimeException;

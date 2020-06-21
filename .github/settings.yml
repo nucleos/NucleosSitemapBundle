@@ -3,9 +3,9 @@
 _extends: .github
 
 repository:
-  name: SitemapBundle
-  description: This bundle provides some classes for an automatic sitemap.xml generation.
-  homepage: https://core23.de
+  name: NucleosSitemapBundle
+  description: 🔗 This bundle provides some classes for an automatic sitemap.xml generation.
+  homepage: https://nucleos.rocks
   topics: symfony, symfony-bundle, bundle, php, sitemap, sitemal-xml
 
 branches:

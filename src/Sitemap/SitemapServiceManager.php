@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Sitemap;
+namespace Nucleos\SitemapBundle\Sitemap;
 
-use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
-use Core23\SitemapBundle\Exception\SitemapNotFoundException;
+use Nucleos\SitemapBundle\Definition\SitemapDefinitionInterface;
+use Nucleos\SitemapBundle\Exception\SitemapNotFoundException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class SitemapServiceManager implements SitemapServiceManagerInterface

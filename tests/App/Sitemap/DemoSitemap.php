@@ -7,11 +7,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\App\Sitemap;
+namespace Nucleos\SitemapBundle\Tests\App\Sitemap;
 
-use Core23\SitemapBundle\Definition\SitemapDefinitionInterface;
-use Core23\SitemapBundle\Model\Url;
-use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
+use Nucleos\SitemapBundle\Definition\SitemapDefinitionInterface;
+use Nucleos\SitemapBundle\Model\Url;
+use Nucleos\SitemapBundle\Sitemap\SitemapServiceInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class DemoSitemap implements SitemapServiceInterface

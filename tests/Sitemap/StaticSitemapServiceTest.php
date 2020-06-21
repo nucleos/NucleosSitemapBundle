@@ -9,13 +9,13 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\Sitemap;
+namespace Nucleos\SitemapBundle\Tests\Sitemap;
 
-use Core23\SitemapBundle\Definition\SitemapDefinition;
-use Core23\SitemapBundle\Model\Url;
-use Core23\SitemapBundle\Sitemap\SitemapServiceInterface;
-use Core23\SitemapBundle\Sitemap\StaticSitemapService;
-use Core23\SitemapBundle\Test\AbstractSitemapServiceTestCase;
+use Nucleos\SitemapBundle\Definition\SitemapDefinition;
+use Nucleos\SitemapBundle\Model\Url;
+use Nucleos\SitemapBundle\Sitemap\SitemapServiceInterface;
+use Nucleos\SitemapBundle\Sitemap\StaticSitemapService;
+use Nucleos\SitemapBundle\Test\AbstractSitemapServiceTestCase;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class StaticSitemapServiceTest extends AbstractSitemapServiceTestCase

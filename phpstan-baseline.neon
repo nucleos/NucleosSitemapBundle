@@ -16,12 +16,12 @@ parameters:
 			path: src/Generator/SitemapGenerator.php
 
 		-
-			message: "#^Method Core23\\\\SitemapBundle\\\\Sitemap\\\\AbstractSitemapService\\:\\:generate\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\SitemapBundle\\\\Sitemap\\\\AbstractSitemapService\\:\\:generate\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Sitemap/AbstractSitemapService.php
 
 		-
-			message: "#^Method Core23\\\\SitemapBundle\\\\Test\\\\AbstractSitemapServiceTestCase\\:\\:assertLastmod\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\SitemapBundle\\\\Test\\\\AbstractSitemapServiceTestCase\\:\\:assertLastmod\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Test/AbstractSitemapServiceTestCase.php
 
@@ -41,22 +41,22 @@ parameters:
 			path: tests/Action/SitemapXMLActionIntegrationTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$sitemapServiceManager of class Core23\\\\SitemapBundle\\\\Generator\\\\SitemapGenerator constructor expects Core23\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceManagerInterface, object given\\.$#"
+			message: "#^Parameter \\#1 \\$sitemapServiceManager of class Nucleos\\\\SitemapBundle\\\\Generator\\\\SitemapGenerator constructor expects Nucleos\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceManagerInterface, object given\\.$#"
 			count: 6
 			path: tests/Generator/SitemapGeneratorTest.php
 
 		-
-			message: "#^Parameter \\#2 \\$defintionManager of class Core23\\\\SitemapBundle\\\\Generator\\\\SitemapGenerator constructor expects Core23\\\\SitemapBundle\\\\Definition\\\\DefintionManagerInterface, object given\\.$#"
+			message: "#^Parameter \\#2 \\$defintionManager of class Nucleos\\\\SitemapBundle\\\\Generator\\\\SitemapGenerator constructor expects Nucleos\\\\SitemapBundle\\\\Definition\\\\DefintionManagerInterface, object given\\.$#"
 			count: 6
 			path: tests/Generator/SitemapGeneratorTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$services of class Core23\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceManager constructor expects array\\<Core23\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceInterface\\>, array\\<string, stdClass\\> given\\.$#"
+			message: "#^Parameter \\#1 \\$services of class Nucleos\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceManager constructor expects array\\<Nucleos\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceInterface\\>, array\\<string, stdClass\\> given\\.$#"
 			count: 1
 			path: tests/Sitemap/SitemapServiceManagerTest.php
 
 		-
-			message: "#^Method Core23\\\\SitemapBundle\\\\Tests\\\\Test\\\\AbstractSitemapServiceTestCaseTest\\:\\:createService\\(\\) should return Core23\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceInterface but returns object\\.$#"
+			message: "#^Method Nucleos\\\\SitemapBundle\\\\Tests\\\\Test\\\\AbstractSitemapServiceTestCaseTest\\:\\:createService\\(\\) should return Nucleos\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceInterface but returns object\\.$#"
 			count: 1
 			path: tests/Test/AbstractSitemapServiceTestCaseTest.php
 

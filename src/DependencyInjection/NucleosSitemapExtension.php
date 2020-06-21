@@ -9,16 +9,16 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\DependencyInjection;
+namespace Nucleos\SitemapBundle\DependencyInjection;
 
-use Core23\SitemapBundle\Generator\SitemapGenerator;
+use Nucleos\SitemapBundle\Generator\SitemapGenerator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-final class Core23SitemapExtension extends Extension
+final class NucleosSitemapExtension extends Extension
 {
     /**
      * @param array<mixed> $configs
@@ -56,6 +56,6 @@ final class Core23SitemapExtension extends Extension
      */
     private function configureStaticUrls(ContainerBuilder $container, array $config): void
     {
-        $container->setParameter('core23_sitemap.static_urls', $config['static']);
+        $container->setParameter('nucleos_sitemap.static_urls', $config['static']);
     }
 }

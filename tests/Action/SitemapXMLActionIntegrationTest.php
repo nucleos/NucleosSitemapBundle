@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\Action;
+namespace Nucleos\SitemapBundle\Tests\Action;
 
-use Core23\SitemapBundle\Tests\App\AppKernel;
+use Nucleos\SitemapBundle\Tests\App\AppKernel;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Component\HttpKernel\Client;

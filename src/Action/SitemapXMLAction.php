@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Action;
+namespace Nucleos\SitemapBundle\Action;
 
-use Core23\SitemapBundle\Generator\SitemapGeneratorInterface;
+use Nucleos\SitemapBundle\Generator\SitemapGeneratorInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 final class SitemapXMLAction

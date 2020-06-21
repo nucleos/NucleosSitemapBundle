@@ -1,5 +1,5 @@
 {
-    "name": "core23/sitemap-bundle",
+    "name": "nucleos/sitemap-bundle",
     "type": "symfony-bundle",
     "description": "This bundle provides some classes for an automatic sitemap.xml generation.",
     "keywords": [
@@ -8,7 +8,7 @@
         "sitemap",
         "bundle"
     ],
-    "homepage": "https://core23.de",
+    "homepage": "https://nucleos.rocks",
     "license": "MIT",
     "authors": [
         {
@@ -44,12 +44,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Core23\\SitemapBundle\\": "src/"
+            "Nucleos\\SitemapBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Core23\\SitemapBundle\\Tests\\": "tests/"
+            "Nucleos\\SitemapBundle\\Tests\\": "tests/"
         }
     },
     "scripts": {

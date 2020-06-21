@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\Fixtures;
+namespace Nucleos\SitemapBundle\Tests\Fixtures;
 
 use Exception;
 use Psr\SimpleCache\InvalidArgumentException as PsrException;

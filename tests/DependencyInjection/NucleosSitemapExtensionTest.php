@@ -9,20 +9,20 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\DependencyInjection;
+namespace Nucleos\SitemapBundle\Tests\DependencyInjection;
 
-use Core23\SitemapBundle\Action\SitemapXMLAction;
-use Core23\SitemapBundle\Definition\DefintionManager;
-use Core23\SitemapBundle\Definition\DefintionManagerInterface;
-use Core23\SitemapBundle\DependencyInjection\Core23SitemapExtension;
-use Core23\SitemapBundle\Generator\SitemapGenerator;
-use Core23\SitemapBundle\Generator\SitemapGeneratorInterface;
-use Core23\SitemapBundle\Sitemap\SitemapServiceManager;
-use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
-use Core23\SitemapBundle\Sitemap\StaticSitemapService;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
+use Nucleos\SitemapBundle\Action\SitemapXMLAction;
+use Nucleos\SitemapBundle\Definition\DefintionManager;
+use Nucleos\SitemapBundle\Definition\DefintionManagerInterface;
+use Nucleos\SitemapBundle\DependencyInjection\NucleosSitemapExtension;
+use Nucleos\SitemapBundle\Generator\SitemapGenerator;
+use Nucleos\SitemapBundle\Generator\SitemapGeneratorInterface;
+use Nucleos\SitemapBundle\Sitemap\SitemapServiceManager;
+use Nucleos\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
+use Nucleos\SitemapBundle\Sitemap\StaticSitemapService;
 
-final class Core23SitemapExtensionTest extends AbstractExtensionTestCase
+final class NucleosSitemapExtensionTest extends AbstractExtensionTestCase
 {
     public function testLoadDefault(): void
     {
@@ -32,7 +32,7 @@ final class Core23SitemapExtensionTest extends AbstractExtensionTestCase
         $this->assertServices();
         $this->assertSitemap();
 
-        $this->assertContainerBuilderHasParameter('core23_sitemap.static_urls', []);
+        $this->assertContainerBuilderHasParameter('nucleos_sitemap.static_urls', []);
     }
 
     public function testLoadWithCacheService(): void
@@ -58,7 +58,7 @@ final class Core23SitemapExtensionTest extends AbstractExtensionTestCase
             ],
         ]);
 
-        $this->assertContainerBuilderHasParameter('core23_sitemap.static_urls', [
+        $this->assertContainerBuilderHasParameter('nucleos_sitemap.static_urls', [
             [
                 'url'        => 'http://example.com',
                 'priority'   => 100,
@@ -70,7 +70,7 @@ final class Core23SitemapExtensionTest extends AbstractExtensionTestCase
     protected function getContainerExtensions(): array
     {
         return [
-            new Core23SitemapExtension(),
+            new NucleosSitemapExtension(),
         ];
     }
 

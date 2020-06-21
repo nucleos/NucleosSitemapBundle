@@ -9,12 +9,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\DependencyInjection\Compiler;
+namespace Nucleos\SitemapBundle\Tests\DependencyInjection\Compiler;
 
-use Core23\SitemapBundle\Definition\DefintionManagerInterface;
-use Core23\SitemapBundle\DependencyInjection\Compiler\SitemapCompilerPass;
-use Core23\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
-use Core23\SitemapBundle\Sitemap\StaticSitemapService;
+use Nucleos\SitemapBundle\Definition\DefintionManagerInterface;
+use Nucleos\SitemapBundle\DependencyInjection\Compiler\SitemapCompilerPass;
+use Nucleos\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
+use Nucleos\SitemapBundle\Sitemap\StaticSitemapService;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
@@ -42,11 +42,11 @@ final class SitemapCompilerPassTest extends TestCase
     protected function setUp(): void
     {
         $this->serviceManager = $this->prophesize(Definition::class);
-        $this->serviceManager->hasTag('core23.sitemap')
+        $this->serviceManager->hasTag('nucleos.sitemap')
             ->willReturn(false)
         ;
         $this->definitionManager = $this->prophesize(Definition::class);
-        $this->definitionManager->hasTag('core23.sitemap')
+        $this->definitionManager->hasTag('nucleos.sitemap')
             ->willReturn(false)
         ;
 
@@ -70,9 +70,9 @@ final class SitemapCompilerPassTest extends TestCase
         ;
 
         $sitemapDefinition = new Definition();
-        $sitemapDefinition->addTag('core23.sitemap');
+        $sitemapDefinition->addTag('nucleos.sitemap');
 
-        $this->container->setParameter('core23_sitemap.static_urls', []);
+        $this->container->setParameter('nucleos_sitemap.static_urls', []);
         $this->container->setDefinition('acme.sitemap', $sitemapDefinition);
 
         $compiler = new SitemapCompilerPass();
@@ -85,12 +85,12 @@ final class SitemapCompilerPassTest extends TestCase
 
     public function testProcessWithNoServices(): void
     {
-        $this->container->setParameter('core23_sitemap.static_urls', []);
+        $this->container->setParameter('nucleos_sitemap.static_urls', []);
 
         $compiler = new SitemapCompilerPass();
         $compiler->process($this->container);
 
-        static::assertSame([], $this->container->getParameter('core23_sitemap.static_urls'));
+        static::assertSame([], $this->container->getParameter('nucleos_sitemap.static_urls'));
 
         $this->definitionManager->addMethodCall('addDefintion', Argument::any())->shouldNotHaveBeenCalled();
     }
@@ -110,7 +110,7 @@ final class SitemapCompilerPassTest extends TestCase
             ->shouldBeCalled()
         ;
 
-        $this->container->setParameter('core23_sitemap.static_urls', [
+        $this->container->setParameter('nucleos_sitemap.static_urls', [
             'static' => [
                 [
                     'url'        => 'http://example.com',
@@ -126,7 +126,7 @@ final class SitemapCompilerPassTest extends TestCase
 
     public function testProcessWithEmptyGroups(): void
     {
-        $this->container->setParameter('core23_sitemap.static_urls', []);
+        $this->container->setParameter('nucleos_sitemap.static_urls', []);
 
         $compiler = new SitemapCompilerPass();
         $compiler->process($this->container);

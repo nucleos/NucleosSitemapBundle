@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\Definition;
+namespace Nucleos\SitemapBundle\Tests\Definition;
 
-use Core23\SitemapBundle\Definition\DefintionManager;
-use Core23\SitemapBundle\Definition\SitemapDefinition;
+use Nucleos\SitemapBundle\Definition\DefintionManager;
+use Nucleos\SitemapBundle\Definition\SitemapDefinition;
 use PHPUnit\Framework\TestCase;
 
 final class DefinitionManagerTest extends TestCase

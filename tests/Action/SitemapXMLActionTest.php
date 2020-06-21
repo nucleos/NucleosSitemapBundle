@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\SitemapBundle\Tests\Action;
+namespace Nucleos\SitemapBundle\Tests\Action;
 
-use Core23\SitemapBundle\Action\SitemapXMLAction;
-use Core23\SitemapBundle\Generator\SitemapGeneratorInterface;
+use Nucleos\SitemapBundle\Action\SitemapXMLAction;
+use Nucleos\SitemapBundle\Generator\SitemapGeneratorInterface;
 use PHPUnit\Framework\TestCase;
 
 final class SitemapXMLActionTest extends TestCase
