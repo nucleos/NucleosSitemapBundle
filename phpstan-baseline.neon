@@ -36,22 +36,7 @@ parameters:
 			path: tests/Action/SitemapXMLActionIntegrationTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$sitemapServiceManager of class Nucleos\\\\SitemapBundle\\\\Generator\\\\SitemapGenerator constructor expects Nucleos\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceManagerInterface, object given\\.$#"
-			count: 6
-			path: tests/Generator/SitemapGeneratorTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$defintionManager of class Nucleos\\\\SitemapBundle\\\\Generator\\\\SitemapGenerator constructor expects Nucleos\\\\SitemapBundle\\\\Definition\\\\DefintionManagerInterface, object given\\.$#"
-			count: 6
-			path: tests/Generator/SitemapGeneratorTest.php
-
-		-
 			message: "#^Parameter \\#1 \\$services of class Nucleos\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceManager constructor expects array\\<Nucleos\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceInterface\\>, array\\<string, stdClass\\> given\\.$#"
 			count: 1
 			path: tests/Sitemap/SitemapServiceManagerTest.php
-
-		-
-			message: "#^Method Nucleos\\\\SitemapBundle\\\\Tests\\\\Test\\\\AbstractSitemapServiceTestCaseTest\\:\\:createService\\(\\) should return Nucleos\\\\SitemapBundle\\\\Sitemap\\\\SitemapServiceInterface but returns object\\.$#"
-			count: 1
-			path: tests/Test/AbstractSitemapServiceTestCaseTest.php
 

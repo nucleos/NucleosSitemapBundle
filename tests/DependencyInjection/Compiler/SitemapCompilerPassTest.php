@@ -25,12 +25,12 @@ use Symfony\Component\DependencyInjection\Reference;
 final class SitemapCompilerPassTest extends TestCase
 {
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<Definition>
      */
     private $serviceManager;
 
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<Definition>
      */
     private $definitionManager;
 
