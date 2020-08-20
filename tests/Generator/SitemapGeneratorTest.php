@@ -29,12 +29,12 @@ use RuntimeException;
 final class SitemapGeneratorTest extends TestCase
 {
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<SitemapServiceManagerInterface>
      */
     private $sitemapServiceManager;
 
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<DefintionManagerInterface>
      */
     private $defintionManager;
 

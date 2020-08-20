@@ -22,7 +22,7 @@ use Prophecy\Prophecy\ObjectProphecy;
 final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 {
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<SitemapServiceInterface>
      */
     private $serviceMock;
 
