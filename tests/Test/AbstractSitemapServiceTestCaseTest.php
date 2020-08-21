@@ -17,10 +17,13 @@ use Nucleos\SitemapBundle\Model\Url;
 use Nucleos\SitemapBundle\Sitemap\SitemapServiceInterface;
 use Nucleos\SitemapBundle\Test\AbstractSitemapServiceTestCase as ParentTestCase;
 use PHPUnit\Framework\AssertionFailedError;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 
 final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy<SitemapServiceInterface>
      */

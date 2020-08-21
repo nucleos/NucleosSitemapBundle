@@ -22,12 +22,15 @@ use Nucleos\SitemapBundle\Tests\Fixtures\InvalidArgumentException;
 use Nucleos\SitemapBundle\Tests\Fixtures\SitemapDefinitionStub;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 use Psr\SimpleCache\CacheInterface;
 use RuntimeException;
 
 final class SitemapGeneratorTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy<SitemapServiceManagerInterface>
      */

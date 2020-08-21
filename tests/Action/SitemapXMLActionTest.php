@@ -14,9 +14,12 @@ namespace Nucleos\SitemapBundle\Tests\Action;
 use Nucleos\SitemapBundle\Action\SitemapXMLAction;
 use Nucleos\SitemapBundle\Generator\SitemapGeneratorInterface;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 final class SitemapXMLActionTest extends TestCase
 {
+    use ProphecyTrait;
+
     public function testExecute(): void
     {
         $generator = $this->prophesize(SitemapGeneratorInterface::class);
