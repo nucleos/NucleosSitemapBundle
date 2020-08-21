@@ -19,12 +19,15 @@ use Nucleos\SitemapBundle\Sitemap\SitemapServiceManager;
 use Nucleos\SitemapBundle\Tests\Fixtures\SitemapDefinitionStub;
 use Nucleos\SitemapBundle\Tests\Fixtures\SitemapService;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use stdClass;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 use TypeError;
 
 final class SitemapServiceManagerTest extends TestCase
 {
+    use ProphecyTrait;
+
     public function testCreationWithInvalidServices(): void
     {
         $this->expectException(TypeError::class);
