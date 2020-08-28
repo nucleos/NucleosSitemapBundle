@@ -10,6 +10,7 @@ NucleosSitemapBundle
 
 [![Continuous Integration](https://github.com/nucleos/NucleosSitemapBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/NucleosSitemapBundle/actions)
 [![Code Coverage](https://codecov.io/gh/nucleos/NucleosSitemapBundle/branch/main/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosSitemapBundle)
+[![Type Coverage](https://shepherd.dev/github/nucleos/NucleosSitemapBundle/coverage.svg)](https://shepherd.dev/github/nucleos/NucleosSitemapBundle)
 
 This bundle provides some classes for an automatic **sitemap.xml** generation.
 

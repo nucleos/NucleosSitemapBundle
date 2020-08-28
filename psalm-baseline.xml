@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="3.14.2@3538fe1955d47f6ee926c0769d71af6db08aa488">
+  <file src="src/DependencyInjection/Configuration.php">
+    <UndefinedMethod occurrences="1">
+      <code>children</code>
+    </UndefinedMethod>
+  </file>
+  <file src="src/Generator/SitemapGenerator.php">
+    <InvalidCatch occurrences="1"/>
+    <InvalidThrow occurrences="1">
+      <code>InvalidArgumentException</code>
+    </InvalidThrow>
+  </file>
+</files>
