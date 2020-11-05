@@ -76,16 +76,7 @@ final class SitemapGenerator implements SitemapGeneratorInterface
             return $this->cache->get($name);
         }
 
-        $service = $this->sitemapServiceManager->get($definition);
-
-        if (null === $service) {
-            return '';
-        }
-
-        $xml = '';
-        foreach ($service->execute($definition) as $entry) {
-            $xml .= $this->getLocEntry($entry);
-        }
+        $xml = $this->generateXML($definition);
 
         if (null !== $this->cache) {
             $this->cache->set($name, $xml, $definition->getTtl());
@@ -102,5 +93,21 @@ final class SitemapGenerator implements SitemapGeneratorInterface
         (null !== $url->getChangeFreq() ? '<changefreq>'.$url->getChangeFreq().'</changefreq>' : '').
         (null  !== $url->getPriority() ? '<priority>'.$url->getPriority().'</priority>' : '').
         '</url>';
+    }
+
+    private function generateXML(SitemapDefinitionInterface $definition): string
+    {
+        $service = $this->sitemapServiceManager->get($definition);
+
+        if (null === $service) {
+            return '';
+        }
+
+        $xml = '';
+        foreach ($service->execute($definition) as $entry) {
+            $xml .= $this->getLocEntry($entry);
+        }
+
+        return $xml;
     }
 }
