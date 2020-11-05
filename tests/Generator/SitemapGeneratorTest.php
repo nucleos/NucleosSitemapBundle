@@ -206,6 +206,9 @@ final class SitemapGeneratorTest extends TestCase
         static::assertSame($expected, $generator->toXML());
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     public function testToXMLWithExpiredCache(): void
     {
         $xmlEntry = '<url><loc>http://nucleos.rocks</loc><lastmod>2017-12-23T00:00:00+00:00</lastmod><changefreq>daily</changefreq><priority>80</priority></url>';

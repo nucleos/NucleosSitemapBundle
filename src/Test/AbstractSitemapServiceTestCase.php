@@ -34,6 +34,14 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
 
     /**
      * @var array[]
+     *
+     * @phpstan-var array<array{
+     *     location: string,
+     *     priority: int,
+     *     changefreq: string,
+     *     lastmod: DateTime|null,
+     *     count: int
+     * }>
      */
     private $urls = [];
 
@@ -73,11 +81,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
             ++$data['count'];
         }
 
-        foreach ($this->urls as $data) {
-            if (0 === $data['count']) {
-                throw new AssertionFailedError(sprintf("The url '%s' was expected to be called actually was not called", $data['location']));
-            }
-        }
+        $this->verifyUrls();
     }
 
     final protected function assertSitemap(string $location, int $priority, string $changeFreq, DateTime $lastMod = null): void
@@ -101,15 +105,18 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         return -1;
     }
 
+    /**
+     * @phpstan-param array{lastmod: DateTime|null} $data
+     */
     private function assertLastmod(array $data, UrlInterface $url): void
     {
-        if (null === $data['lastmod'] && null === $url->getLastMod()) {
+        $lastmod = $data['lastmod'];
+
+        if (null === $lastmod && null === $url->getLastMod()) {
             return;
         }
 
-        \assert($data['lastmod'] instanceof DateTime);
-
-        if (null === $url->getLastMod() || $url->getLastMod() > $data['lastmod'] || $url->getLastMod() < $data['lastmod']) {
+        if (null === $url->getLastMod() || $url->getLastMod() > $lastmod || $url->getLastMod() < $lastmod) {
             throw new AssertionFailedError(
                 sprintf("The url '%s' was expected with a different lastmod.", $url->getLoc())
             );
@@ -117,9 +124,9 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
     }
 
     /**
-     * @param array<int|null> $data
+     * @phpstan-param array{priority: int} $data
      */
-    private function assertPriority(UrlInterface $url, array $data = []): void
+    private function assertPriority(UrlInterface $url, array $data): void
     {
         if ($url->getPriority() !== $data['priority']) {
             throw new AssertionFailedError(
@@ -134,9 +141,9 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
     }
 
     /**
-     * @param array<string|null> $data
+     * @phpstan-param array{changefreq: string} $data
      */
-    private function assertChangeFreq(UrlInterface $url, array $data = []): void
+    private function assertChangeFreq(UrlInterface $url, array $data): void
     {
         if ($url->getChangeFreq() !== $data['changefreq']) {
             throw new AssertionFailedError(
@@ -147,6 +154,17 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
                     $url->getChangeFreq()
                 )
             );
+        }
+    }
+
+    private function verifyUrls(): void
+    {
+        foreach ($this->urls as $data) {
+            if (0 === $data['count']) {
+                throw new AssertionFailedError(
+                    sprintf("The url '%s' was expected to be called actually was not called", $data['location'])
+                );
+            }
         }
     }
 }

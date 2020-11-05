@@ -16,11 +16,6 @@ parameters:
 			path: src/Generator/SitemapGenerator.php
 
 		-
-			message: "#^Method Nucleos\\\\SitemapBundle\\\\Test\\\\AbstractSitemapServiceTestCase\\:\\:assertLastmod\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Test/AbstractSitemapServiceTestCase.php
-
-		-
 			message: "#^Instantiated class Symfony\\\\Component\\\\HttpKernel\\\\Client not found\\.$#"
 			count: 1
 			path: tests/Action/SitemapXMLActionIntegrationTest.php
