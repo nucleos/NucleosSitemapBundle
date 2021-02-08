@@ -8,7 +8,7 @@ NucleosSitemapBundle
 [![Monthly Downloads](https://poser.pugx.org/nucleos/sitemap-bundle/d/monthly)](https://packagist.org/packages/nucleos/sitemap-bundle)
 [![Daily Downloads](https://poser.pugx.org/nucleos/sitemap-bundle/d/daily)](https://packagist.org/packages/nucleos/sitemap-bundle)
 
-[![Continuous Integration](https://github.com/nucleos/NucleosSitemapBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/NucleosSitemapBundle/actions?query=workflow%3A"Continuous+Integration")
+[![Continuous Integration](https://github.com/nucleos/NucleosSitemapBundle/workflows/Continuous%20Integration/badge.svg?event=push)](https://github.com/nucleos/NucleosSitemapBundle/actions?query=workflow%3A"Continuous+Integration"+event%3Apush)
 [![Code Coverage](https://codecov.io/gh/nucleos/NucleosSitemapBundle/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosSitemapBundle)
 [![Type Coverage](https://shepherd.dev/github/nucleos/NucleosSitemapBundle/coverage.svg)](https://shepherd.dev/github/nucleos/NucleosSitemapBundle)
 
