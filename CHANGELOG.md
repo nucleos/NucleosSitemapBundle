@@ -1,6 +1,33 @@
-# 4.0.0
+# Changelog
 
-## Changes
+All notable changes to this project will be documented in this file, in reverse chronological order by release.
+
+## 4.1.0 - TBD
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+
+## 4.0.0
+
+### Changes
 
 * Renamed namespace `Core23\SitemapBundle` to `Nucleos\SitemapBundle` after move to [@nucleos]
 
@@ -35,14 +62,14 @@
   to delete backup files created in the previous step.
 
 
-# 3.2.0
+## 3.2.0
 
-## Changes
+### Changes
 
 - Add missing strict file header [@core23] ([#31])
 - Use default public setting for all actions [@core23] ([#15])
 
-## 📦 Dependencies
+### 📦 Dependencies
 
 - Add support for symfony 5 [@core23] ([#20])
 - Drop support for symfony 3 [@core23] ([#27])
