@@ -2,27 +2,30 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 4.2.0 - TBD
+## 4.2.0 - 2021-12-07
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [4.2.0](https://github.com/nucleos/NucleosSitemapBundle/milestone/3)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 4.2.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **4**
+- Total contributors: **1**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [373: Add symfony 6 support](https://github.com/nucleos/NucleosSitemapBundle/pull/373) thanks to @core23
+ - [372: Drop symfony 4 support](https://github.com/nucleos/NucleosSitemapBundle/pull/372) thanks to @core23
+ - [364: Drop PHP 7 support](https://github.com/nucleos/NucleosSitemapBundle/pull/364) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [371: Update tools and use make to run them](https://github.com/nucleos/NucleosSitemapBundle/pull/371) thanks to @core23
 
 ## 4.1.0 - 2021-02-09
 
