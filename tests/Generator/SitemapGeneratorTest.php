@@ -20,24 +20,20 @@ use Nucleos\SitemapBundle\Sitemap\SitemapServiceInterface;
 use Nucleos\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
 use Nucleos\SitemapBundle\Tests\Fixtures\InvalidArgumentException;
 use Nucleos\SitemapBundle\Tests\Fixtures\SitemapDefinitionStub;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
 use Psr\SimpleCache\CacheInterface;
 use RuntimeException;
 
 final class SitemapGeneratorTest extends TestCase
 {
-    use ProphecyTrait;
-
     /**
-     * @var ObjectProphecy<SitemapServiceManagerInterface>
+     * @var SitemapServiceManagerInterface&MockObject
      */
     private $sitemapServiceManager;
 
     /**
-     * @var ObjectProphecy<DefintionManagerInterface>
+     * @var DefintionManagerInterface&MockObject
      */
     private $defintionManager;
 
@@ -48,8 +44,8 @@ final class SitemapGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->sitemapServiceManager = $this->prophesize(SitemapServiceManagerInterface::class);
-        $this->defintionManager      = $this->prophesize(DefintionManagerInterface::class);
+        $this->sitemapServiceManager = $this->createMock(SitemapServiceManagerInterface::class);
+        $this->defintionManager      = $this->createMock(DefintionManagerInterface::class);
     }
 
     public function testToXMLWithInvalidDefinition(): void
@@ -62,19 +58,19 @@ final class SitemapGeneratorTest extends TestCase
 
         $definition = new SitemapDefinitionStub('foo');
 
-        $this->sitemapServiceManager->get($definition)
+        $this->sitemapServiceManager->method('get')->with($definition)
             ->willReturn(null)
         ;
 
-        $this->defintionManager->getAll()
+        $this->defintionManager->method('getAll')
             ->willReturn([
                 'dummy' => $definition,
             ])
         ;
 
         $generator = new SitemapGenerator(
-            $this->sitemapServiceManager->reveal(),
-            $this->defintionManager->reveal()
+            $this->sitemapServiceManager,
+            $this->defintionManager
         );
 
         static::assertSame($expected, $generator->toXML());
@@ -88,13 +84,13 @@ final class SitemapGeneratorTest extends TestCase
         $expected .= 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
         $expected .= '</urlset>';
 
-        $this->defintionManager->getAll()
+        $this->defintionManager->method('getAll')
             ->willReturn([])
         ;
 
         $generator = new SitemapGenerator(
-            $this->sitemapServiceManager->reveal(),
-            $this->defintionManager->reveal()
+            $this->sitemapServiceManager,
+            $this->defintionManager
         );
 
         static::assertSame($expected, $generator->toXML());
@@ -111,40 +107,40 @@ final class SitemapGeneratorTest extends TestCase
 
         $definition = new SitemapDefinitionStub('foo');
 
-        $url = $this->prophesize(UrlInterface::class);
-        $url->getChangeFreq()
+        $url = $this->createMock(UrlInterface::class);
+        $url->method('getChangeFreq')
             ->willReturn(Url::FREQUENCE_DAILY)
         ;
-        $url->getLastMod()
+        $url->method('getLastMod')
             ->willReturn(new DateTime('2017-12-23 00:00:00'))
         ;
-        $url->getLoc()
+        $url->method('getLoc')
             ->willReturn('http://nucleos.rocks')
         ;
-        $url->getPriority()
+        $url->method('getPriority')
             ->willReturn(80)
         ;
 
-        $sitemap = $this->prophesize(SitemapServiceInterface::class);
-        $sitemap->execute($definition)
+        $sitemap = $this->createMock(SitemapServiceInterface::class);
+        $sitemap->method('execute')->with($definition)
             ->willReturn([
-                $url->reveal(),
+                $url,
             ])
         ;
 
-        $this->sitemapServiceManager->get($definition)
+        $this->sitemapServiceManager->method('get')->with($definition)
             ->willReturn($sitemap)
         ;
 
-        $this->defintionManager->getAll()
+        $this->defintionManager->method('getAll')
             ->willReturn([
                 'dummy' => $definition,
             ])
         ;
 
         $generator = new SitemapGenerator(
-            $this->sitemapServiceManager->reveal(),
-            $this->defintionManager->reveal()
+            $this->sitemapServiceManager,
+            $this->defintionManager
         );
 
         static::assertSame($expected, $generator->toXML());
@@ -163,44 +159,44 @@ final class SitemapGeneratorTest extends TestCase
 
         $definition = new SitemapDefinitionStub('foo');
 
-        $url = $this->prophesize(UrlInterface::class);
-        $url->getChangeFreq()
+        $url = $this->createMock(UrlInterface::class);
+        $url->method('getChangeFreq')
             ->willReturn(Url::FREQUENCE_DAILY)
         ;
-        $url->getLastMod()
+        $url->method('getLastMod')
             ->willReturn(new DateTime('2017-12-23 00:00:00'))
         ;
-        $url->getLoc()
+        $url->method('getLoc')
             ->willReturn('http://nucleos.rocks')
         ;
-        $url->getPriority()
+        $url->method('getPriority')
             ->willReturn(80)
         ;
 
-        $sitemap = $this->prophesize(SitemapServiceInterface::class);
+        $sitemap = $this->createMock(SitemapServiceInterface::class);
 
-        $this->sitemapServiceManager->get($definition)
+        $this->sitemapServiceManager->method('get')->with($definition)
             ->willReturn($sitemap)
         ;
 
-        $this->defintionManager->getAll()
+        $this->defintionManager->method('getAll')
             ->willReturn([
                 'dummy' => $definition,
             ])
         ;
 
-        $cache = $this->prophesize(CacheInterface::class);
-        $cache->has(Argument::containingString('Sitemap_'))
+        $cache = $this->createMock(CacheInterface::class);
+        $cache->method('has')->with(static::stringStartsWith('Sitemap_'))
             ->willReturn(true)
         ;
-        $cache->get(Argument::containingString('Sitemap_'))
+        $cache->method('get')->with(static::stringStartsWith('Sitemap_'))
             ->willReturn($xmlEntry)
         ;
 
         $generator = new SitemapGenerator(
-            $this->sitemapServiceManager->reveal(),
-            $this->defintionManager->reveal(),
-            $cache->reveal()
+            $this->sitemapServiceManager,
+            $this->defintionManager,
+            $cache
         );
 
         static::assertSame($expected, $generator->toXML());
@@ -222,49 +218,48 @@ final class SitemapGeneratorTest extends TestCase
 
         $definition = new SitemapDefinitionStub('example');
 
-        $url = $this->prophesize(UrlInterface::class);
-        $url->getChangeFreq()
+        $url = $this->createMock(UrlInterface::class);
+        $url->method('getChangeFreq')
             ->willReturn(Url::FREQUENCE_DAILY)
         ;
-        $url->getLastMod()
+        $url->method('getLastMod')
             ->willReturn(new DateTime('2017-12-23'))
         ;
-        $url->getLoc()
+        $url->method('getLoc')
             ->willReturn('http://nucleos.rocks')
         ;
-        $url->getPriority()
+        $url->method('getPriority')
             ->willReturn(80)
         ;
 
-        $sitemap = $this->prophesize(SitemapServiceInterface::class);
-        $sitemap->execute($definition)
+        $sitemap = $this->createMock(SitemapServiceInterface::class);
+        $sitemap->method('execute')->with($definition)
             ->willReturn([
-                $url->reveal(),
+                $url,
             ])
         ;
 
-        $this->sitemapServiceManager->get($definition)
+        $this->sitemapServiceManager->method('get')->with($definition)
             ->willReturn($sitemap)
         ;
 
-        $this->defintionManager->getAll()
+        $this->defintionManager->method('getAll')
             ->willReturn([
                 'dummy' => $definition,
             ])
         ;
 
-        $cache = $this->prophesize(CacheInterface::class);
-        $cache->has(Argument::containingString('Sitemap_'))
+        $cache = $this->createMock(CacheInterface::class);
+        $cache->method('has')->with(static::stringStartsWith('Sitemap_'))
             ->willReturn(false)
         ;
-        $cache->set(Argument::containingString('Sitemap_'), $xmlEntry, 42)
-            ->shouldBeCalled()
+        $cache->method('set')->with(static::stringStartsWith('Sitemap_'), $xmlEntry, 42)
         ;
 
         $generator = new SitemapGenerator(
-            $this->sitemapServiceManager->reveal(),
-            $this->defintionManager->reveal(),
-            $cache->reveal()
+            $this->sitemapServiceManager,
+            $this->defintionManager,
+            $cache
         );
 
         static::assertSame($expected, $generator->toXML());
@@ -277,25 +272,25 @@ final class SitemapGeneratorTest extends TestCase
 
         $definition = new SitemapDefinitionStub('example');
 
-        $this->sitemapServiceManager->get($definition)
+        $this->sitemapServiceManager->method('get')->with($definition)
             ->willReturn(null)
         ;
 
-        $this->defintionManager->getAll()
+        $this->defintionManager->method('getAll')
             ->willReturn([
                 'dummy' => $definition,
             ])
         ;
 
-        $cache = $this->prophesize(CacheInterface::class);
-        $cache->has(Argument::containingString('Sitemap_'))
-            ->willThrow(InvalidArgumentException::class)
+        $cache = $this->createMock(CacheInterface::class);
+        $cache->method('has')->with(static::stringStartsWith('Sitemap_'))
+            ->willThrowException(new InvalidArgumentException())
         ;
 
         $generator = new SitemapGenerator(
-            $this->sitemapServiceManager->reveal(),
-            $this->defintionManager->reveal(),
-            $cache->reveal()
+            $this->sitemapServiceManager,
+            $this->defintionManager,
+            $cache
         );
 
         $generator->toXML();

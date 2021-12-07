@@ -17,21 +17,18 @@ use Nucleos\SitemapBundle\Model\Url;
 use Nucleos\SitemapBundle\Sitemap\SitemapServiceInterface;
 use Nucleos\SitemapBundle\Test\AbstractSitemapServiceTestCase as ParentTestCase;
 use PHPUnit\Framework\AssertionFailedError;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
+use PHPUnit\Framework\MockObject\MockObject;
 
 final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 {
-    use ProphecyTrait;
-
     /**
-     * @var ObjectProphecy<SitemapServiceInterface>
+     * @var SitemapServiceInterface&MockObject
      */
     private $serviceMock;
 
     protected function setUp(): void
     {
-        $this->serviceMock = $this->prophesize(SitemapServiceInterface::class);
+        $this->serviceMock = $this->createMock(SitemapServiceInterface::class);
 
         parent::setUp();
     }
@@ -41,9 +38,9 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
         $this->expectException(AssertionFailedError::class);
         $this->expectExceptionMessage('Failed asserting that actual size 2 matches expected size 1.');
 
-        $sitemap = $this->prophesize(SitemapDefinitionInterface::class);
+        $sitemap = $this->createMock(SitemapDefinitionInterface::class);
 
-        $this->serviceMock->execute($sitemap)
+        $this->serviceMock->method('execute')->with($sitemap)
             ->willReturn([
                 new Url('/path/foo', 20, Url::FREQUENCE_DAILY),
                 new Url('/path/bar', 20, Url::FREQUENCE_DAILY),
@@ -52,7 +49,7 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 
         $this->assertSitemap('/path/bar', 20, Url::FREQUENCE_DAILY);
 
-        $this->process($sitemap->reveal());
+        $this->process($sitemap);
     }
 
     public function testAssertUrlNotCalled(): void
@@ -60,9 +57,9 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
         $this->expectException(AssertionFailedError::class);
         $this->expectExceptionMessage("The url '/path/foo' was not expected to be called.");
 
-        $sitemap = $this->prophesize(SitemapDefinitionInterface::class);
+        $sitemap = $this->createMock(SitemapDefinitionInterface::class);
 
-        $this->serviceMock->execute($sitemap)
+        $this->serviceMock->method('execute')->with($sitemap)
             ->willReturn(
                 [
                     new Url('/path/foo', 20, Url::FREQUENCE_DAILY),
@@ -72,7 +69,7 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 
         $this->assertSitemap('/path/bar', 20, Url::FREQUENCE_DAILY);
 
-        $this->process($sitemap->reveal());
+        $this->process($sitemap);
     }
 
     public function testAssertLastmod(): void
@@ -80,9 +77,9 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
         $this->expectException(AssertionFailedError::class);
         $this->expectExceptionMessage("The url '/path/foo' was expected with a different lastmod.");
 
-        $sitemap = $this->prophesize(SitemapDefinitionInterface::class);
+        $sitemap = $this->createMock(SitemapDefinitionInterface::class);
 
-        $this->serviceMock->execute($sitemap)
+        $this->serviceMock->method('execute')->with($sitemap)
             ->willReturn([
                 new Url('/path/foo', 20, Url::FREQUENCE_DAILY, new DateTime('2018-10-02')),
             ])
@@ -90,7 +87,7 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 
         $this->assertSitemap('/path/foo', 20, Url::FREQUENCE_DAILY, new DateTime('2018-10-01'));
 
-        $this->process($sitemap->reveal());
+        $this->process($sitemap);
     }
 
     public function testAssertPriority(): void
@@ -98,9 +95,9 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
         $this->expectException(AssertionFailedError::class);
         $this->expectExceptionMessage("The url '/path/foo' was expected with 20 priority. 60 given.");
 
-        $sitemap = $this->prophesize(SitemapDefinitionInterface::class);
+        $sitemap = $this->createMock(SitemapDefinitionInterface::class);
 
-        $this->serviceMock->execute($sitemap)
+        $this->serviceMock->method('execute')->with($sitemap)
             ->willReturn([
                 new Url('/path/foo', 60, Url::FREQUENCE_DAILY),
             ])
@@ -108,7 +105,7 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 
         $this->assertSitemap('/path/foo', 20, Url::FREQUENCE_DAILY);
 
-        $this->process($sitemap->reveal());
+        $this->process($sitemap);
     }
 
     public function testAssertChangeFreq(): void
@@ -116,9 +113,9 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
         $this->expectException(AssertionFailedError::class);
         $this->expectExceptionMessage("The url '/path/foo' was expected with weekly changefreq. daily given.");
 
-        $sitemap = $this->prophesize(SitemapDefinitionInterface::class);
+        $sitemap = $this->createMock(SitemapDefinitionInterface::class);
 
-        $this->serviceMock->execute($sitemap)
+        $this->serviceMock->method('execute')->with($sitemap)
             ->willReturn([
                 new Url('/path/foo', 20, Url::FREQUENCE_DAILY),
             ])
@@ -126,11 +123,11 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 
         $this->assertSitemap('/path/foo', 20, Url::FREQUENCE_WEEKLY);
 
-        $this->process($sitemap->reveal());
+        $this->process($sitemap);
     }
 
     protected function createService(): SitemapServiceInterface
     {
-        return $this->serviceMock->reveal();
+        return $this->serviceMock;
     }
 }

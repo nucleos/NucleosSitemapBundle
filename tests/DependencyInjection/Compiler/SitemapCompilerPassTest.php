@@ -15,25 +15,21 @@ use Nucleos\SitemapBundle\Definition\DefintionManagerInterface;
 use Nucleos\SitemapBundle\DependencyInjection\Compiler\SitemapCompilerPass;
 use Nucleos\SitemapBundle\Sitemap\SitemapServiceManagerInterface;
 use Nucleos\SitemapBundle\Sitemap\StaticSitemapService;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
 final class SitemapCompilerPassTest extends TestCase
 {
-    use ProphecyTrait;
-
     /**
-     * @var ObjectProphecy<Definition>
+     * @var Definition&MockObject
      */
     private $serviceManager;
 
     /**
-     * @var ObjectProphecy<Definition>
+     * @var Definition&MockObject
      */
     private $definitionManager;
 
@@ -44,32 +40,31 @@ final class SitemapCompilerPassTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->serviceManager = $this->prophesize(Definition::class);
-        $this->serviceManager->hasTag('nucleos.sitemap')
+        $this->serviceManager = $this->createMock(Definition::class);
+        $this->serviceManager->method('hasTag')->with('nucleos.sitemap')
             ->willReturn(false)
         ;
-        $this->definitionManager = $this->prophesize(Definition::class);
-        $this->definitionManager->hasTag('nucleos.sitemap')
+        $this->definitionManager = $this->createMock(Definition::class);
+        $this->definitionManager->method('hasTag')->with('nucleos.sitemap')
             ->willReturn(false)
         ;
 
         $this->container = new ContainerBuilder();
-        $this->container->setDefinition(SitemapServiceManagerInterface::class, $this->serviceManager->reveal());
-        $this->container->setDefinition(DefintionManagerInterface::class, $this->definitionManager->reveal());
+        $this->container->setDefinition(SitemapServiceManagerInterface::class, $this->serviceManager);
+        $this->container->setDefinition(DefintionManagerInterface::class, $this->definitionManager);
     }
 
     public function testProcess(): void
     {
-        $this->serviceManager->addMethodCall('addSitemap', Argument::that(static function (array $args): bool {
-            return 'acme.sitemap' === $args[0] && $args[1] instanceof Reference;
-        }))
-        ->shouldBeCalled()
+        $this->serviceManager->expects(static::once())->method('addMethodCall')
+            ->with('addSitemap', static::callback(static function (array $args): bool {
+                return 'acme.sitemap' === $args[0] && $args[1] instanceof Reference;
+            }))
         ;
 
-        $this->definitionManager->addMethodCall('addDefinition', [
+        $this->definitionManager->expects(static::once())->method('addMethodCall')->with('addDefinition', [
             'acme.sitemap',
         ])
-        ->shouldBeCalled()
         ;
 
         $sitemapDefinition = new Definition();
@@ -83,7 +78,7 @@ final class SitemapCompilerPassTest extends TestCase
 
         static::assertTrue($sitemapDefinition->isPublic());
 
-        $this->definitionManager->addMethodCall('addDefintion', Argument::any())->shouldNotHaveBeenCalled();
+        $this->definitionManager->expects(static::never())->method('addMethodCall');
     }
 
     public function testProcessWithNoServices(): void
@@ -95,12 +90,12 @@ final class SitemapCompilerPassTest extends TestCase
 
         static::assertSame([], $this->container->getParameter('nucleos_sitemap.static_urls'));
 
-        $this->definitionManager->addMethodCall('addDefintion', Argument::any())->shouldNotHaveBeenCalled();
+        $this->definitionManager->expects(static::never())->method('addMethodCall');
     }
 
     public function testProcessWithStaticUrls(): void
     {
-        $this->definitionManager->addMethodCall('addDefinition', [
+        $this->definitionManager->expects(static::once())->method('addMethodCall')->with('addDefinition', [
             StaticSitemapService::class,
             [
                 [
@@ -110,7 +105,6 @@ final class SitemapCompilerPassTest extends TestCase
                 ],
             ],
         ])
-            ->shouldBeCalled()
         ;
 
         $this->container->setParameter('nucleos_sitemap.static_urls', [
@@ -134,7 +128,7 @@ final class SitemapCompilerPassTest extends TestCase
         $compiler = new SitemapCompilerPass();
         $compiler->process($this->container);
 
-        $this->serviceManager->addMethodCall(Argument::any())->shouldNotBeCalled();
-        $this->definitionManager->addMethodCall(Argument::any())->shouldNotBeCalled();
+        $this->serviceManager->expects(static::never())->method('addMethodCall');
+        $this->definitionManager->expects(static::never())->method('addMethodCall');
     }
 }

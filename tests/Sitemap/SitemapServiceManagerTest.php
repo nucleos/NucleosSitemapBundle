@@ -19,15 +19,12 @@ use Nucleos\SitemapBundle\Sitemap\SitemapServiceManager;
 use Nucleos\SitemapBundle\Tests\Fixtures\SitemapDefinitionStub;
 use Nucleos\SitemapBundle\Tests\Fixtures\SitemapService;
 use PHPUnit\Framework\TestCase;
-use Prophecy\PhpUnit\ProphecyTrait;
 use stdClass;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 use TypeError;
 
 final class SitemapServiceManagerTest extends TestCase
 {
-    use ProphecyTrait;
-
     public function testCreationWithInvalidServices(): void
     {
         $this->expectException(TypeError::class);
@@ -104,27 +101,27 @@ final class SitemapServiceManagerTest extends TestCase
         $this->expectException(SitemapNotFoundException::class);
         $this->expectExceptionMessage('The sitemap service "my-type" does not exist');
 
-        $definition = $this->prophesize(SitemapDefinitionInterface::class);
-        $definition->getType()
+        $definition = $this->createMock(SitemapDefinitionInterface::class);
+        $definition->method('getType')
             ->willReturn('my-type')
         ;
-        $definition->getSettings()
+        $definition->method('getSettings')
             ->willReturn([])
         ;
 
         $manager = new SitemapServiceManager();
-        $manager->get($definition->reveal());
+        $manager->get($definition);
     }
 
     public function testAddSitemap(): void
     {
-        $service = $this->prophesize(SitemapServiceInterface::class);
+        $service = $this->createMock(SitemapServiceInterface::class);
 
         $manager = new SitemapServiceManager();
-        $manager->addSitemap('my-type', $service->reveal());
+        $manager->addSitemap('my-type', $service);
 
         $definition = new SitemapDefinitionStub('my-type');
 
-        static::assertSame($service->reveal(), $manager->get($definition));
+        static::assertSame($service, $manager->get($definition));
     }
 }
