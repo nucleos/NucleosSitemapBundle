@@ -6,11 +6,6 @@ parameters:
 			path: src/DependencyInjection/Compiler/SitemapCompilerPass.php
 
 		-
-			message: "#^PHPDoc tag @throws with type Psr\\\\SimpleCache\\\\InvalidArgumentException is not subtype of Throwable$#"
-			count: 1
-			path: src/Generator/SitemapGenerator.php
-
-		-
 			message: "#^Call to method getResponse\\(\\) on an unknown class Symfony\\\\Component\\\\HttpKernel\\\\Client\\.$#"
 			count: 1
 			path: tests/Action/SitemapXMLActionIntegrationTest.php
