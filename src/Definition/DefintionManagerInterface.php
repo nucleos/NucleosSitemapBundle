@@ -16,7 +16,7 @@ interface DefintionManagerInterface
     /**
      * Returns the sitemaps.
      *
-     * @return array<string, SitemapDefinitionInterface>
+     * @return SitemapDefinitionInterface[]
      */
     public function getAll(): array;
 

@@ -1,5 +1,11 @@
 framework:
     secret: secret
+    test: true
+
+nucleos_sitemap:
+    static:
+        - { url: '/foo', priority: 50 }
+        - { url: '/bar', priority: 75 }
 
 services:
     _defaults:
