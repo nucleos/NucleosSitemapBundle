@@ -22,7 +22,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 {
     /**
-     * @var SitemapServiceInterface&MockObject
+     * @var MockObject&SitemapServiceInterface
      */
     private $serviceMock;
 

@@ -28,7 +28,7 @@ use RuntimeException;
 final class SitemapGeneratorTest extends TestCase
 {
     /**
-     * @var SitemapServiceManagerInterface&MockObject
+     * @var MockObject&SitemapServiceManagerInterface
      */
     private $sitemapServiceManager;
 

@@ -6,6 +6,9 @@
     </include>
   </coverage>
   <php>
+    <env name="APP_DEBUG" value="false"/>
+    <env name="APP_ENV" value="test"/>
+    <env name="KERNEL_CLASS" value="Nucleos\SitemapBundle\Tests\App\AppKernel"/>
     <env name="SYMFONY_DEPRECATIONS_HELPER" value="max[self]=0"/>
   </php>
   <testsuites>

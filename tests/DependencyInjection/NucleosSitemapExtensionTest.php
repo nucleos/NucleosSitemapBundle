@@ -55,6 +55,11 @@ final class NucleosSitemapExtensionTest extends AbstractExtensionTestCase
                     'priority'   => 100,
                     'changefreq' => 'daily',
                 ],
+                [
+                    'url'        => 'http://google.com',
+                    'priority'   => 50,
+                    'changefreq' => 'daily',
+                ],
             ],
         ]);
 
@@ -62,6 +67,11 @@ final class NucleosSitemapExtensionTest extends AbstractExtensionTestCase
             [
                 'url'        => 'http://example.com',
                 'priority'   => 100,
+                'changefreq' => 'daily',
+            ],
+            [
+                'url'        => 'http://google.com',
+                'priority'   => 50,
                 'changefreq' => 'daily',
             ],
         ]);

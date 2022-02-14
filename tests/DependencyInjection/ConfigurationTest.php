@@ -49,6 +49,11 @@ final class ConfigurationTest extends TestCase
                     'priority'   => 100,
                     'changefreq' => 'daily',
                 ],
+                [
+                    'url'        => 'http://google.com',
+                    'priority'   => 50,
+                    'changefreq' => 'daily',
+                ],
             ],
         ]]);
 
@@ -60,6 +65,11 @@ final class ConfigurationTest extends TestCase
                 [
                     'url'        => 'http://example.com',
                     'priority'   => 100,
+                    'changefreq' => 'daily',
+                ],
+                [
+                    'url'        => 'http://google.com',
+                    'priority'   => 50,
                     'changefreq' => 'daily',
                 ],
             ],

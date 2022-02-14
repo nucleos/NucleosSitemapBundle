@@ -18,16 +18,11 @@ final class DefintionManager implements DefintionManagerInterface
      *
      * @var SitemapDefinitionInterface[]
      */
-    private $sitemaps;
-
-    public function __construct()
-    {
-        $this->sitemaps = [];
-    }
+    private array $sitemaps = [];
 
     public function addDefinition(string $id, array $configuration = []): DefintionManagerInterface
     {
-        $this->add($id, new SitemapDefinition($id, $configuration));
+        $this->add(new SitemapDefinition($id, $configuration));
 
         return $this;
     }
@@ -37,9 +32,9 @@ final class DefintionManager implements DefintionManagerInterface
         return $this->sitemaps;
     }
 
-    private function add(string $code, SitemapDefinitionInterface $sitemap): DefintionManagerInterface
+    private function add(SitemapDefinitionInterface $sitemap): DefintionManagerInterface
     {
-        $this->sitemaps[$code] = $sitemap;
+        $this->sitemaps[] = $sitemap;
 
         return $this;
     }
