@@ -2,27 +2,29 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 4.3.0 - TBD
+## 4.3.0 - 2022-02-14
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [4.3.0](https://github.com/nucleos/NucleosSitemapBundle/milestone/6)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 4.3.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **3**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
+ - [418: Fix static sitemap generation](https://github.com/nucleos/NucleosSitemapBundle/pull/418) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [386: Use shared pipelines](https://github.com/nucleos/NucleosSitemapBundle/pull/386) thanks to @core23
+ - [374: Remove composer-bin plugin](https://github.com/nucleos/NucleosSitemapBundle/pull/374) thanks to @core23
 
 ## 4.2.0 - 2021-12-07
 
