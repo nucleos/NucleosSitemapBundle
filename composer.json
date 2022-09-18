@@ -3,6 +3,7 @@
     "description": "This bundle provides some classes for an automatic sitemap.xml generation.",
     "license": "MIT",
     "type": "symfony-bundle",
+    "abandoned": "nucleos/seo-bundle",
     "keywords": [
         "symfony",
         "sitemap.xml",
@@ -62,6 +63,9 @@
         }
     },
     "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
         "sort-packages": true
     }
 }
