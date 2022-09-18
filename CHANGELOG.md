@@ -2,27 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 4.4.0 - TBD
+## 4.4.0 - 2022-09-18
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [4.4.0](https://github.com/nucleos/NucleosSitemapBundle/milestone/8)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 4.4.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### BC Break
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [483: Deprecate project in favor of nucleos/seo-bundle](https://github.com/nucleos/NucleosSitemapBundle/pull/483) thanks to @core23
 
 ## 4.3.0 - 2022-02-14
 
